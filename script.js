@@ -6,7 +6,7 @@ const websiteData = {
     adViews: { ad1: 0, ad2: 0, ad3: 0 },
     subscribers: [],
     
-    // Sample articles data
+    // Sample articles data - YOU WILL ADD YOUR REAL ARTICLES HERE!
     articles: [
         {
             id: 1,
@@ -81,6 +81,61 @@ const websiteData = {
     }
 };
 
+// ====== VISITOR TRACKING ======
+const VisitorTracker = {
+    init: function() {
+        this.loadVisitorData();
+        this.incrementVisitor();
+        this.updateOnlineUsers();
+        this.startLiveUpdates();
+    },
+    
+    loadVisitorData: function() {
+        const savedData = localStorage.getItem('visitorStats');
+        if (savedData) {
+            websiteData.visitorStats = JSON.parse(savedData);
+        } else {
+            websiteData.visitorStats = {
+                totalVisitors: 1,
+                todayVisitors: 1,
+                thisWeekVisitors: 1,
+                thisMonthVisitors: 1,
+                onlineNow: 1,
+                pageViews: 1,
+                lastVisit: new Date().toISOString(),
+                visitorHistory: []
+            };
+            this.saveVisitorData();
+        }
+    },
+    
+    incrementVisitor: function() {
+        websiteData.visitorStats.totalVisitors++;
+        websiteData.visitorStats.pageViews++;
+        websiteData.visitorStats.lastVisit = new Date().toISOString();
+        this.saveVisitorData();
+    },
+    
+    updateOnlineUsers: function() {
+        websiteData.visitorStats.onlineNow = Math.floor(Math.random() * 5) + 1;
+        localStorage.setItem('onlineUsers', JSON.stringify({
+            count: websiteData.visitorStats.onlineNow,
+            timestamp: Date.now()
+        }));
+    },
+    
+    startLiveUpdates: function() {
+        setInterval(() => {
+            this.updateOnlineUsers();
+            updateFooterStats();
+        }, 30000);
+    },
+    
+    saveVisitorData: function() {
+        localStorage.setItem('visitorStats', JSON.stringify(websiteData.visitorStats));
+    }
+};
+
 // ====== DOM ELEMENTS ======
 let DOM = {};
 
@@ -108,6 +163,106 @@ function loadFromLocalStorage() {
     }
 }
 
+// ====== MOBILE ANCHOR LINK FIX ======
+function fixMobileAnchorLinks() {
+    // Get all anchor links that point to #something
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            
+            // Skip empty anchors or external links
+            if (targetId === '#' || targetId.includes('://')) return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (!targetElement) return;
+            
+            // Prevent default only for smooth scroll
+            e.preventDefault();
+            
+            // Calculate header height (adjust if needed)
+            const header = document.querySelector('header');
+            const headerHeight = header ? header.offsetHeight : 80;
+            
+            // Calculate target position with offset
+            const targetPosition = targetElement.getBoundingClientRect().top + 
+                                  window.pageYOffset - 
+                                  headerHeight - 10;
+            
+            // Smooth scroll to position
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            
+            // Update URL without page reload
+            if (history.pushState) {
+                history.pushState(null, null, targetId);
+            } else {
+                window.location.hash = targetId;
+            }
+        });
+    });
+    
+    // Fix for page load with hash in URL
+    window.addEventListener('load', function() {
+        if (window.location.hash) {
+            setTimeout(() => {
+                const hash = window.location.hash;
+                const element = document.querySelector(hash);
+                if (element) {
+                    const header = document.querySelector('header');
+                    const headerHeight = header ? header.offsetHeight : 80;
+                    const targetPosition = element.getBoundingClientRect().top + 
+                                          window.pageYOffset - 
+                                          headerHeight - 10;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+        }
+    });
+}
+
+// ====== UPDATE FOOTER STATS ======
+function updateFooterStats() {
+    // Update visitor count in footer
+    const footerVisitors = document.getElementById('total-visitors-footer');
+    const footerPageViews = document.getElementById('page-views-footer');
+    const footerOnline = document.getElementById('online-now-footer');
+    const footerArticles = document.getElementById('article-count-footer');
+    
+    if (footerVisitors) {
+        footerVisitors.textContent = formatNumber(websiteData.visitorStats?.totalVisitors || 1);
+    }
+    
+    if (footerPageViews) {
+        footerPageViews.textContent = formatNumber(websiteData.visitorStats?.pageViews || 1);
+    }
+    
+    if (footerOnline) {
+        footerOnline.textContent = websiteData.visitorStats?.onlineNow || 1;
+    }
+    
+    if (footerArticles) {
+        footerArticles.textContent = websiteData.articles?.length || 0;
+    }
+    
+    // Update last update time
+    const lastUpdate = document.getElementById('last-update');
+    if (lastUpdate) {
+        const now = new Date();
+        lastUpdate.textContent = now.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric'
+        });
+    }
+}
+
 // ====== PAGE INITIALIZATION ======
 function initPage() {
     // Track page load time
@@ -119,20 +274,26 @@ function initPage() {
     // Load saved data
     loadFromLocalStorage();
     
-    // Update visitor count
-    websiteData.visitorCount++;
-    updateLocalStorage();
+    // Initialize visitor tracking
+    VisitorTracker.init();
     
     // Initialize components
     renderArticles();
     renderTrending();
     updateStats();
+    updateFooterStats();
     setupEventListeners();
     simulateAdViews();
     
+    // FIX MOBILE ANCHOR LINKS - ADD THIS!
+    fixMobileAnchorLinks();
+    
     // Calculate and display load time
     const loadTime = performance.now() - startTime;
-    document.getElementById('load-time').textContent = (loadTime / 1000).toFixed(2);
+    const loadTimeElement = document.getElementById('load-time');
+    if (loadTimeElement) {
+        loadTimeElement.textContent = (loadTime / 1000).toFixed(2);
+    }
     
     console.log(`${websiteData.siteName} loaded successfully!`);
 }
@@ -245,7 +406,6 @@ function renderTrending() {
         item.addEventListener('click', function() {
             const id = this.getAttribute('data-id');
             alert(`Opening trending article ${id}...`);
-            // In real site: Navigate to article page
         });
     });
 }
@@ -254,15 +414,15 @@ function renderTrending() {
 function updateStats() {
     // Update visitor stats
     if (DOM.totalVisitors) {
-        DOM.totalVisitors.textContent = formatNumber(websiteData.visitorCount);
+        DOM.totalVisitors.textContent = formatNumber(websiteData.visitorStats?.totalVisitors || 1);
     }
     
     if (DOM.onlineNow) {
-        DOM.onlineNow.textContent = getRandomNumber(1, 50);
+        DOM.onlineNow.textContent = websiteData.visitorStats?.onlineNow || 1;
     }
     
     if (DOM.articlesRead) {
-        DOM.articlesRead.textContent = formatNumber(websiteData.articlesRead);
+        DOM.articlesRead.textContent = formatNumber(websiteData.articlesRead || 0);
     }
     
     // Update content counts
@@ -287,15 +447,15 @@ function updateStats() {
     
     // Update ad view counts
     if (DOM.adViews.ad1) {
-        DOM.adViews.ad1.textContent = formatNumber(websiteData.adViews.ad1);
+        DOM.adViews.ad1.textContent = formatNumber(websiteData.adViews.ad1 || 0);
     }
     
     if (DOM.adViews.ad2) {
-        DOM.adViews.ad2.textContent = formatNumber(websiteData.adViews.ad2);
+        DOM.adViews.ad2.textContent = formatNumber(websiteData.adViews.ad2 || 0);
     }
     
     if (DOM.adViews.ad3) {
-        DOM.adViews.ad3.textContent = formatNumber(websiteData.adViews.ad3);
+        DOM.adViews.ad3.textContent = formatNumber(websiteData.adViews.ad3 || 0);
     }
 }
 
@@ -309,6 +469,7 @@ function simulateAdViews() {
         
         updateLocalStorage();
         updateStats();
+        updateFooterStats();
     }, 5000);
 }
 
@@ -317,6 +478,7 @@ function readArticle(id) {
     websiteData.articlesRead++;
     updateLocalStorage();
     updateStats();
+    updateFooterStats();
     
     const article = websiteData.articles.find(a => a.id == id);
     if (article) {
@@ -334,7 +496,7 @@ function readArticle(id) {
 }
 
 function handleSubscribe() {
-    const email = DOM.newsletterEmail.value.trim();
+    const email = DOM.newsletterEmail ? DOM.newsletterEmail.value.trim() : '';
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
     if (!email) {
@@ -353,20 +515,27 @@ function handleSubscribe() {
     }
     
     // Simulate API call
-    DOM.subscribeBtn.disabled = true;
-    DOM.subscribeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+    if (DOM.subscribeBtn) {
+        DOM.subscribeBtn.disabled = true;
+        DOM.subscribeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+    }
     
     setTimeout(() => {
         websiteData.subscribers.push(email);
         updateLocalStorage();
         
-        DOM.subscribeBtn.disabled = false;
-        DOM.subscribeBtn.textContent = 'Subscribe';
-        DOM.newsletterEmail.value = '';
+        if (DOM.subscribeBtn) {
+            DOM.subscribeBtn.disabled = false;
+            DOM.subscribeBtn.textContent = 'Subscribe';
+        }
+        
+        if (DOM.newsletterEmail) {
+            DOM.newsletterEmail.value = '';
+        }
         
         showMessage(`Thank you for subscribing! Welcome to ${websiteData.siteName}.`, 'success');
         
-        // Log subscription (in real site, send to your database)
+        // Log subscription
         console.log(`New subscriber: ${email}`);
         console.log(`Total subscribers: ${websiteData.subscribers.length}`);
     }, 1500);
@@ -386,13 +555,16 @@ function showMessage(text, type) {
 }
 
 function handleLoadMore() {
+    if (!DOM.loadMoreBtn) return;
+    
     DOM.loadMoreBtn.disabled = true;
     DOM.loadMoreBtn.textContent = 'Loading...';
-    DOM.loadingIndicator.style.display = 'block';
+    if (DOM.loadingIndicator) {
+        DOM.loadingIndicator.style.display = 'block';
+    }
     
     // Simulate loading more articles
     setTimeout(() => {
-        // In a real site, you would fetch more articles from a server
         const newArticles = [
             {
                 id: websiteData.articles.length + 1,
@@ -419,15 +591,20 @@ function handleLoadMore() {
         
         DOM.loadMoreBtn.disabled = false;
         DOM.loadMoreBtn.textContent = 'Load More Articles';
-        DOM.loadingIndicator.style.display = 'none';
+        if (DOM.loadingIndicator) {
+            DOM.loadingIndicator.style.display = 'none';
+        }
         
         updateStats();
+        updateFooterStats();
         
         alert('2 new articles loaded!');
     }, 2000);
 }
 
 function toggleMobileMenu() {
+    if (!DOM.mobileMenu || !DOM.mobileMenuBtn) return;
+    
     DOM.mobileMenu.classList.toggle('active');
     const icon = DOM.mobileMenuBtn.querySelector('i');
     if (DOM.mobileMenu.classList.contains('active')) {
@@ -465,7 +642,7 @@ function setupEventListeners() {
     document.addEventListener('click', function(e) {
         if (DOM.mobileMenu && DOM.mobileMenu.classList.contains('active') &&
             !DOM.mobileMenu.contains(e.target) && 
-            !DOM.mobileMenuBtn.contains(e.target)) {
+            DOM.mobileMenuBtn && !DOM.mobileMenuBtn.contains(e.target)) {
             toggleMobileMenu();
         }
     });
@@ -478,9 +655,12 @@ function setupEventListeners() {
     });
     
     // Logo click
-    document.querySelector('.logo').addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    const logo = document.querySelector('.logo');
+    if (logo) {
+        logo.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 }
 
 // ====== INITIALIZE WHEN PAGE LOADS ======
@@ -492,5 +672,7 @@ window.DigitalLifeHub = {
     readArticle,
     handleSubscribe,
     updateStats,
-    showMessage
+    showMessage,
+    fixMobileAnchorLinks // Expose for debugging
 };
+

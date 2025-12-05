@@ -43,6 +43,8 @@ header {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+
+
 .header-content {
     display: flex;
     justify-content: space-between;
@@ -662,5 +664,30 @@ footer {
     .ad-space {
         padding: 20px;
         min-height: 200px;
+    }
+}
+
+/* ====== MOBILE ANCHOR FIX ====== */
+/* Add this to your existing CSS */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Height of your header */
+}
+
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 70px; /* Adjust for mobile */
+    }
+}
+
+/* For Food, Tech, Gaming sections */
+#food, #tech, #gaming {
+    scroll-margin-top: 80px; /* Same as header height */
+}
+
+@media (max-width: 768px) {
+    #food, #tech, #gaming {
+        scroll-margin-top: 70px;
     }
 }
