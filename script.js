@@ -6,7 +6,7 @@ const websiteData = {
     adViews: { ad1: 0, ad2: 0, ad3: 0 },
     subscribers: [],
     
-    // Sample articles data - YOU WILL ADD YOUR REAL ARTICLES HERE!
+    // Sample articles data - WITH ALL 16 ARTICLES
     articles: [
         {
             id: 1,
@@ -61,6 +61,96 @@ const websiteData = {
             image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
             readTime: "8 min",
             date: "2024-03-10"
+        },
+        {
+            id: 7,
+            category: "food",
+            title: "The Secret to Perfect Ghanaian Jollof Rice",
+            excerpt: "After 5 years of experimenting, I've found the perfect rice-to-tomato ratio and the secret ingredient that makes Ghanaian jollof stand out.",
+            image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187",
+            readTime: "10 min",
+            date: "2024-03-16"
+        },
+        {
+            id: 8,
+            category: "food",
+            title: "7 Budget Meals for Students in Ghana (Under GH₵10)",
+            excerpt: "As a former university student, these affordable meals kept me fed without breaking the bank. All recipes use local ingredients.",
+            image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+            readTime: "8 min",
+            date: "2024-03-16"
+        },
+        {
+            id: 9,
+            category: "food",
+            title: "My Grandmother's Authentic Waakye Recipe",
+            excerpt: "Passed down through generations, this traditional Waakye recipe uses local sorghum leaves for that distinctive color and flavor.",
+            image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38",
+            readTime: "12 min",
+            date: "2024-03-16"
+        },
+        {
+            id: 10,
+            category: "food",
+            title: "How to Enjoy Street Food Safely in Accra",
+            excerpt: "After getting food poisoning twice, I learned these essential tips for identifying clean street food vendors in Ghana.",
+            image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
+            readTime: "6 min",
+            date: "2024-03-16"
+        },
+        {
+            id: 11,
+            category: "tech",
+            title: "Best Smartphones Under GH₵2,000 in Ghana (2024)",
+            excerpt: "After testing 8 different phones available in Ghana, here are my top picks for budget smartphones that actually perform well.",
+            image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+            readTime: "9 min",
+            date: "2024-03-16"
+        },
+        {
+            id: 12,
+            category: "tech",
+            title: "How to Save 50% on Mobile Data in Ghana",
+            excerpt: "Living with expensive data plans taught me these 10 practical tips to reduce your monthly data consumption significantly.",
+            image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31",
+            readTime: "7 min",
+            date: "2024-03-16"
+        },
+        {
+            id: 13,
+            category: "tech",
+            title: "How I Landed My First Tech Job in Ghana Without a Degree",
+            excerpt: "My journey from knowing nothing about coding to getting hired as a web developer in Accra - and how you can do it too.",
+            image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0",
+            readTime: "11 min",
+            date: "2024-03-16"
+        },
+        {
+            id: 14,
+            category: "gaming",
+            title: "5 Mobile Games That Actually Pay Real Money in Ghana",
+            excerpt: "After testing dozens of 'earn money' games, these are the legitimate ones that actually let you cash out to Mobile Money.",
+            image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd",
+            readTime: "8 min",
+            date: "2024-03-16"
+        },
+        {
+            id: 15,
+            category: "gaming",
+            title: "Gaming Setup Under GH₵500 for Students in Ghana",
+            excerpt: "You don't need an expensive PC to enjoy gaming. Here's my budget setup using affordable Android devices and free games.",
+            image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575",
+            readTime: "6 min",
+            date: "2024-03-16"
+        },
+        {
+            id: 16,
+            category: "gaming",
+            title: "Best Games to Play with Friends at University in Ghana",
+            excerpt: "These are the games my friends and I actually play together on campus - perfect for group gaming sessions.",
+            image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f",
+            readTime: "5 min",
+            date: "2024-03-16"
         }
     ],
     
@@ -117,6 +207,7 @@ const VisitorTracker = {
     },
     
     updateOnlineUsers: function() {
+        // Simulate online users
         websiteData.visitorStats.onlineNow = Math.floor(Math.random() * 5) + 1;
         localStorage.setItem('onlineUsers', JSON.stringify({
             count: websiteData.visitorStats.onlineNow,
@@ -128,7 +219,7 @@ const VisitorTracker = {
         setInterval(() => {
             this.updateOnlineUsers();
             updateFooterStats();
-        }, 30000);
+        }, 30000); // Update every 30 seconds
     },
     
     saveVisitorData: function() {
@@ -149,7 +240,12 @@ function getRandomNumber(min, max) {
 }
 
 function updateLocalStorage() {
-    localStorage.setItem('digitalLifeHubData', JSON.stringify(websiteData));
+    localStorage.setItem('digitalLifeHubData', JSON.stringify({
+        visitorCount: websiteData.visitorCount,
+        articlesRead: websiteData.articlesRead,
+        adViews: websiteData.adViews,
+        subscribers: websiteData.subscribers
+    }));
 }
 
 function loadFromLocalStorage() {
@@ -181,7 +277,7 @@ function fixMobileAnchorLinks() {
             // Prevent default only for smooth scroll
             e.preventDefault();
             
-            // Calculate header height (adjust if needed)
+            // Calculate header height
             const header = document.querySelector('header');
             const headerHeight = header ? header.offsetHeight : 80;
             
@@ -285,7 +381,7 @@ function initPage() {
     setupEventListeners();
     simulateAdViews();
     
-    // FIX MOBILE ANCHOR LINKS - ADD THIS!
+    // Fix mobile anchor links
     fixMobileAnchorLinks();
     
     // Calculate and display load time
@@ -326,12 +422,22 @@ function cacheDOMElements() {
 }
 
 // ====== RENDER ARTICLES ======
-function renderArticles() {
+function renderArticles(showAll = false) {
     if (!DOM.articlesContainer) return;
     
     DOM.articlesContainer.innerHTML = '';
     
-    websiteData.articles.forEach(article => {
+    // Track how many articles to show
+    let articlesToShow;
+    if (showAll) {
+        // Show all articles
+        articlesToShow = websiteData.articles;
+    } else {
+        // Show only first 6 articles initially
+        articlesToShow = websiteData.articles.slice(0, 6);
+    }
+    
+    articlesToShow.forEach(article => {
         const category = websiteData.categories[article.category];
         const articleHTML = `
             <article class="article-card article-${article.category}" data-id="${article.id}">
@@ -346,9 +452,9 @@ function renderArticles() {
                         <span><i class="far fa-clock"></i> ${article.readTime} read</span>
                         <span><i class="far fa-calendar"></i> ${article.date}</span>
                     </div>
-                    <a href="#" class="read-more" data-id="${article.id}">
-                        Read More <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="article.html?id=${article.id}" class="read-more">
+                         Read More <i class="fas fa-arrow-right"></i>
+                     </a>
                 </div>
             </article>
         `;
@@ -356,25 +462,25 @@ function renderArticles() {
         DOM.articlesContainer.innerHTML += articleHTML;
     });
     
-    // Add click events to articles
-    document.querySelectorAll('.article-card').forEach(card => {
-        card.addEventListener('click', function(e) {
-            if (!e.target.classList.contains('read-more')) {
-                const id = this.getAttribute('data-id');
-                readArticle(id);
-            }
-        });
-    });
-    
-    // Add click events to read more buttons
-    document.querySelectorAll('.read-more').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const id = this.getAttribute('data-id');
-            readArticle(id);
-        });
-    });
+    // Update the "Load More" button text based on how many articles are shown
+    if (DOM.loadMoreBtn) {
+        const totalArticles = websiteData.articles.length;
+        const shownArticles = articlesToShow.length;
+        
+        if (shownArticles >= totalArticles) {
+            // All articles are shown, hide or disable the button
+            DOM.loadMoreBtn.disabled = true;
+            DOM.loadMoreBtn.textContent = 'All Articles Loaded';
+            DOM.loadMoreBtn.style.opacity = '0.6';
+            DOM.loadMoreBtn.style.cursor = 'not-allowed';
+        } else {
+            // More articles available
+            DOM.loadMoreBtn.disabled = false;
+            DOM.loadMoreBtn.textContent = `Load More Articles (${totalArticles - shownArticles} remaining)`;
+            DOM.loadMoreBtn.style.opacity = '1';
+            DOM.loadMoreBtn.style.cursor = 'pointer';
+        }
+    }
 }
 
 // ====== RENDER TRENDING ======
@@ -401,11 +507,12 @@ function renderTrending() {
         DOM.trendingList.innerHTML += trendingHTML;
     });
     
-    // Add click events to trending items
+    // Add click events to trending items - link to corresponding articles
     document.querySelectorAll('.trending-item').forEach(item => {
         item.addEventListener('click', function() {
             const id = this.getAttribute('data-id');
-            alert(`Opening trending article ${id}...`);
+            // Navigate to the article page
+            window.location.href = `article.html?id=${id}`;
         });
     });
 }
@@ -427,22 +534,25 @@ function updateStats() {
     
     // Update content counts
     if (DOM.recipeCount) {
-        DOM.recipeCount.textContent = formatNumber(150 + getRandomNumber(1, 20));
+        const foodArticles = websiteData.articles.filter(a => a.category === 'food').length;
+        DOM.recipeCount.textContent = formatNumber(foodArticles * 25); // Multiply for realistic count
     }
     
     if (DOM.tutorialCount) {
-        DOM.tutorialCount.textContent = formatNumber(80 + getRandomNumber(1, 10));
+        const techArticles = websiteData.articles.filter(a => a.category === 'tech').length;
+        DOM.tutorialCount.textContent = formatNumber(techArticles * 13); // Multiply for realistic count
     }
     
     if (DOM.guideCount) {
-        DOM.guideCount.textContent = formatNumber(200 + getRandomNumber(1, 30));
+        const gamingArticles = websiteData.articles.filter(a => a.category === 'gaming').length;
+        DOM.guideCount.textContent = formatNumber(gamingArticles * 33); // Multiply for realistic count
     }
     
     if (DOM.totalContent) {
-        const total = parseInt(DOM.recipeCount.textContent.replace(/,/g, '')) +
-                     parseInt(DOM.tutorialCount.textContent.replace(/,/g, '')) +
-                     parseInt(DOM.guideCount.textContent.replace(/,/g, ''));
-        DOM.totalContent.textContent = formatNumber(total);
+        const foodCount = parseInt(DOM.recipeCount.textContent.replace(/,/g, '')) || 0;
+        const techCount = parseInt(DOM.tutorialCount.textContent.replace(/,/g, '')) || 0;
+        const gamingCount = parseInt(DOM.guideCount.textContent.replace(/,/g, '')) || 0;
+        DOM.totalContent.textContent = formatNumber(foodCount + techCount + gamingCount);
     }
     
     // Update ad view counts
@@ -462,39 +572,27 @@ function updateStats() {
 // ====== SIMULATE AD VIEWS ======
 function simulateAdViews() {
     // Increment ad views every 5 seconds
-    setInterval(() => {
-        websiteData.adViews.ad1 += getRandomNumber(1, 5);
-        websiteData.adViews.ad2 += getRandomNumber(1, 3);
-        websiteData.adViews.ad3 += getRandomNumber(1, 2);
+    const adInterval = setInterval(() => {
+        if (websiteData.adViews.ad1 !== undefined) {
+            websiteData.adViews.ad1 += getRandomNumber(1, 5);
+        }
+        if (websiteData.adViews.ad2 !== undefined) {
+            websiteData.adViews.ad2 += getRandomNumber(1, 3);
+        }
+        if (websiteData.adViews.ad3 !== undefined) {
+            websiteData.adViews.ad3 += getRandomNumber(1, 2);
+        }
         
         updateLocalStorage();
         updateStats();
         updateFooterStats();
     }, 5000);
+    
+    // Store interval ID for cleanup if needed
+    window.adSimulationInterval = adInterval;
 }
 
 // ====== EVENT HANDLERS ======
-function readArticle(id) {
-    websiteData.articlesRead++;
-    updateLocalStorage();
-    updateStats();
-    updateFooterStats();
-    
-    const article = websiteData.articles.find(a => a.id == id);
-    if (article) {
-        alert(`Reading: ${article.title}\n\nThis simulates reading an article. In a real site, you would navigate to the full article page.`);
-        
-        // Highlight the read article
-        const articleCard = document.querySelector(`.article-card[data-id="${id}"]`);
-        if (articleCard) {
-            articleCard.style.opacity = '0.8';
-            setTimeout(() => {
-                articleCard.style.opacity = '1';
-            }, 1000);
-        }
-    }
-}
-
 function handleSubscribe() {
     const email = DOM.newsletterEmail ? DOM.newsletterEmail.value.trim() : '';
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -554,52 +652,120 @@ function showMessage(text, type) {
     }, 5000);
 }
 
+// ====== LOAD MORE ARTICLES FUNCTION ======
 function handleLoadMore() {
     if (!DOM.loadMoreBtn) return;
     
+    // Disable button and show loading
     DOM.loadMoreBtn.disabled = true;
     DOM.loadMoreBtn.textContent = 'Loading...';
     if (DOM.loadingIndicator) {
         DOM.loadingIndicator.style.display = 'block';
     }
     
-    // Simulate loading more articles
+    // Simulate loading delay
     setTimeout(() => {
-        const newArticles = [
+        // Create more sample articles to load
+        const moreArticles = [
             {
                 id: websiteData.articles.length + 1,
-                category: "tech",
-                title: "Advanced CSS Grid Techniques",
-                excerpt: "Master complex layouts with these advanced CSS Grid tips and tricks.",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                readTime: "9 min",
-                date: "2024-03-09"
+                category: "food",
+                title: "Traditional Ghanaian Banku Recipe with Tilapia",
+                excerpt: "Step-by-step guide to making perfect banku and grilled tilapia with shito sauce.",
+                image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47",
+                readTime: "15 min",
+                date: "March 17, 2024"
             },
             {
                 id: websiteData.articles.length + 2,
+                category: "tech",
+                title: "Free Coding Resources Available in Ghana",
+                excerpt: "Discover free coding bootcamps, online courses, and mentorship programs available to Ghanaians.",
+                image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+                readTime: "8 min",
+                date: "March 17, 2024"
+            },
+            {
+                id: websiteData.articles.length + 3,
+                category: "gaming",
+                title: "How to Stream Games from Ghana with Slow Internet",
+                excerpt: "Tips and tricks for streaming gameplay on Twitch/YouTube with Ghana's internet speeds.",
+                image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd",
+                readTime: "7 min",
+                date: "March 17, 2024"
+            },
+            {
+                id: websiteData.articles.length + 4,
                 category: "food",
-                title: "Meal Prep for Busy Developers",
-                excerpt: "Save time and eat healthy with these efficient meal prep strategies.",
-                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Healthy Ghanaian Snacks Under GH₵5",
+                excerpt: "Affordable, nutritious snacks you can find in local markets across Ghana.",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+                readTime: "5 min",
+                date: "March 17, 2024"
+            },
+            {
+                id: websiteData.articles.length + 5,
+                category: "tech",
+                title: "Best Laptops for Students in Ghana (2024 Edition)",
+                excerpt: "Detailed review of laptops available in Ghana that offer the best value for money.",
+                image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+                readTime: "10 min",
+                date: "March 17, 2024"
+            },
+            {
+                id: websiteData.articles.length + 6,
+                category: "gaming",
+                title: "Local Multiplayer Games for Android (No Internet Needed)",
+                excerpt: "Perfect games to play with friends during power outages or when data is expensive.",
+                image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f",
                 readTime: "6 min",
-                date: "2024-03-08"
+                date: "March 17, 2024"
             }
         ];
         
-        websiteData.articles.push(...newArticles);
-        renderArticles();
+        // Add the new articles to our data
+        websiteData.articles.push(...moreArticles);
         
+        // Re-render ALL articles (including the new ones)
+        renderArticles(true); // true means show all articles
+        
+        // Reset button state
         DOM.loadMoreBtn.disabled = false;
         DOM.loadMoreBtn.textContent = 'Load More Articles';
         if (DOM.loadingIndicator) {
             DOM.loadingIndicator.style.display = 'none';
         }
         
+        // Update stats
         updateStats();
         updateFooterStats();
         
-        alert('2 new articles loaded!');
-    }, 2000);
+        // Show success message
+        const successMsg = document.createElement('div');
+        successMsg.style.cssText = 'text-align: center; color: #38a169; margin-top: 10px; font-weight: bold; animation: fadeIn 0.5s;';
+        successMsg.innerHTML = `<i class="fas fa-check-circle"></i> ${moreArticles.length} new articles loaded!`;
+        DOM.loadMoreBtn.parentNode.appendChild(successMsg);
+        
+        // Remove message after 3 seconds
+        setTimeout(() => {
+            successMsg.style.opacity = '0';
+            successMsg.style.transition = 'opacity 0.5s';
+            setTimeout(() => successMsg.remove(), 500);
+        }, 3000);
+        
+        // Smooth scroll to show new articles
+        const articlesContainer = document.getElementById('articles-container');
+        if (articlesContainer) {
+            const newArticles = articlesContainer.querySelectorAll('.article-card');
+            if (newArticles.length > 6) { // If we had more than initial 6 articles
+                const lastNewArticle = newArticles[newArticles.length - moreArticles.length];
+                lastNewArticle.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+        
+        console.log(`Loaded ${moreArticles.length} more articles. Total: ${websiteData.articles.length}`);
+        
+    }, 1500); // Simulate network delay
 }
 
 function toggleMobileMenu() {
@@ -610,9 +776,11 @@ function toggleMobileMenu() {
     if (DOM.mobileMenu.classList.contains('active')) {
         icon.classList.remove('fa-bars');
         icon.classList.add('fa-times');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
     } else {
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
+        document.body.style.overflow = ''; // Restore scrolling
     }
 }
 
@@ -647,32 +815,81 @@ function setupEventListeners() {
         }
     });
     
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && DOM.mobileMenu && DOM.mobileMenu.classList.contains('active')) {
+            toggleMobileMenu();
+        }
+    });
+    
     // Track ad clicks (simulated)
     document.querySelectorAll('.ad-space').forEach(ad => {
         ad.addEventListener('click', function() {
-            alert('This would navigate to an advertiser\'s website.\nIn a real site, this click would earn revenue.');
+            // Simulate ad click tracking
+            const adId = this.id;
+            let adClicks = JSON.parse(localStorage.getItem('adClicks') || '{}');
+            adClicks[adId] = (adClicks[adId] || 0) + 1;
+            localStorage.setItem('adClicks', JSON.stringify(adClicks));
+            
+            // Show message
+            const messages = [
+                "Thanks for checking out our sponsor!",
+                "This click helps support free content creation.",
+                "Advertisement revenue keeps this site running.",
+                "Your click makes a difference - thank you!"
+            ];
+            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+            
+            alert(`🚀 ${randomMsg}\n\nThis would normally take you to the advertiser's website.`);
         });
     });
     
-    // Logo click
+    // Logo click - scroll to top
     const logo = document.querySelector('.logo');
     if (logo) {
-        logo.addEventListener('click', function() {
+        logo.addEventListener('click', function(e) {
+            e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
+    
+    // Track article card clicks for analytics (optional)
+    document.addEventListener('click', function(e) {
+        const articleCard = e.target.closest('.article-card');
+        if (articleCard && !e.target.closest('.read-more')) {
+            const articleId = articleCard.getAttribute('data-id');
+            // Track views for articles clicked but not via "Read More"
+            let articleClicks = JSON.parse(localStorage.getItem('articleClicks') || '{}');
+            articleClicks[articleId] = (articleClicks[articleId] || 0) + 1;
+            localStorage.setItem('articleClicks', JSON.stringify(articleClicks));
+        }
+    });
 }
 
 // ====== INITIALIZE WHEN PAGE LOADS ======
 document.addEventListener('DOMContentLoaded', initPage);
 
+// ====== CLEANUP ON PAGE UNLOAD ======
+window.addEventListener('beforeunload', function() {
+    // Clear the ad simulation interval
+    if (window.adSimulationInterval) {
+        clearInterval(window.adSimulationInterval);
+    }
+});
+
 // ====== EXPOSE FUNCTIONS FOR GLOBAL USE ======
 window.DigitalLifeHub = {
     data: websiteData,
-    readArticle,
     handleSubscribe,
     updateStats,
     showMessage,
-    fixMobileAnchorLinks // Expose for debugging
+    fixMobileAnchorLinks,
+    getStats: function() {
+        return {
+            visitors: websiteData.visitorStats?.totalVisitors || 0,
+            online: websiteData.visitorStats?.onlineNow || 0,
+            articles: websiteData.articles.length,
+            subscribers: websiteData.subscribers.length
+        };
+    }
 };
-

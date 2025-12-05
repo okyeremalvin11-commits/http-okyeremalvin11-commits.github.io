@@ -3,63 +3,1212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Life Hub | Article</title>
+    <title>Loading Article - Digital Life Hub</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2440011936736360"
-     crossorigin="anonymous"></script>
+    <style>
+        .article-page {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .article-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .article-category {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .article-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            color: #2d3748;
+        }
+        
+        .article-meta {
+            color: #718096;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .article-content {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2d3748;
+            margin-bottom: 40px;
+        }
+        
+        .article-content h2 {
+            margin: 40px 0 20px 0;
+            color: #2d3748;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        
+        .article-content p {
+            margin-bottom: 20px;
+        }
+        
+        .article-content ul, .article-content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .article-content li {
+            margin-bottom: 10px;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 25px;
+            background: #3182ce;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            background: #2c5282;
+            transform: translateY(-2px);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 100px 20px;
+            color: #718096;
+        }
+        
+        .loading-spinner {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #3182ce;
+        }
+        
+        .tip-box {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 4px solid #3182ce;
+        }
+        
+        .tip-box h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 28px;
+            }
+            
+            .article-image {
+                height: 250px;
+            }
+            
+            .article-content {
+                font-size: 16px;
+            }
+            
+            .article-meta {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container header-content">
-            <div class="logo">🚀 DigitalLifeHub</div>
+            <div class="logo">
+                <div class="logo-icon">🚀</div>
+                <span>DigitalLifeHub</span>
+            </div>
             <nav>
                 <ul>
                     <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="food.html"><i class="fas fa-utensils"></i> Food</a></li>
-                    <li><a href="tech.html"><i class="fas fa-microchip"></i> Tech</a></li>
+                    <li><a href="tech.html"><i class="fas fa-laptop-code"></i> Tech</a></li>
                     <li><a href="gaming.html"><i class="fas fa-gamepad"></i> Gaming</a></li>
                     <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a></li>
                     <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container" id="article-container">
-        <!-- Article content loaded by JS -->
-    </main>
+    <!-- Main Article Content -->
+    <div class="container">
+        <div class="article-page">
+            <div id="loading" class="loading">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+                <h2>Loading Article...</h2>
+                <p>Please wait while we load the article content.</p>
+            </div>
+            
+            <div id="article-content" style="display: none;">
+                <!-- Article will be loaded here -->
+            </div>
+            
+            <a href="index.html" class="back-button" id="back-button" style="display: none;">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2024 DigitalLifeHub</p>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3><i class="fas fa-rocket"></i> DigitalLifeHub</h3>
+                    <p style="color: #a0aec0; margin-top: 10px; line-height: 1.6;">
+                        Your ultimate guide to food, technology, and gaming lifestyle. 
+                        Free content supported by ethical advertising.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 DigitalLifeHub. All content is free to use with attribution.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
     <script>
-        // Get article ID from URL
-        const params = new URLSearchParams(window.location.search);
-        const articleId = params.get('id');
-
-        // Find the article
-        const article = DigitalLifeHub.data.articles.find(a => a.id == articleId);
-
-        const container = document.getElementById('article-container');
-
-        if (article) {
-            container.innerHTML = `
-                <h1>${article.title}</h1>
-                <p><strong>Category:</strong> ${article.category}</p>
-                <p><strong>Read Time:</strong> ${article.readTime}</p>
-                <p><strong>Date:</strong> ${article.date}</p>
-                <img src="${article.image}" alt="${article.title}" style="width:100%; max-width:800px; margin:20px 0;">
-                <p>${article.excerpt}</p>
-                <p>This is the full content of your article. Expand it with more paragraphs, images, or guides.</p>
-            `;
-        } else {
-            container.innerHTML = `<p>No article found.</p>`;
+        // ====== ARTICLE LOADING SYSTEM ======
+        
+        // Get article ID from URL (e.g., article.html?id=7)
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = parseInt(urlParams.get('id'));
+        
+        // Article database - ACTUAL CONTENT for ALL 16 articles
+        const articleDatabase = {
+            // ====== ARTICLE 1 ======
+            1: {
+                title: "5-Minute Breakfast Recipes for Programmers",
+                category: "food",
+                excerpt: "Quick, healthy breakfast ideas you can make between coding sessions.",
+                image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                readTime: "3 min",
+                date: "March 15, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #e53e3e;">Food</span>
+                        <h1 class="article-title">5-Minute Breakfast Recipes for Programmers</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 3 min read</span>
+                            <span><i class="far fa-calendar"></i> March 15, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187" alt="Quick Breakfast" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>The Programmer's Breakfast Problem</h2>
+                        <p>As developers, we often sacrifice breakfast for more coding time. But skipping breakfast leads to energy crashes during crucial debugging sessions. These recipes solve that problem.</p>
+                        
+                        <h2>Recipe 1: 3-Ingredient Protein Shake</h2>
+                        <p><strong>Ingredients:</strong></p>
+                        <ul>
+                            <li>1 banana</li>
+                            <li>1 scoop protein powder</li>
+                            <li>1 cup milk (or almond milk)</li>
+                            <li>Optional: handful of spinach (trust me, you won't taste it)</li>
+                        </ul>
+                        
+                        <p><strong>Instructions:</strong> Blend for 60 seconds. Done.</p>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-laptop-code"></i> Why This Works</h3>
+                            <p>30g of protein keeps you full through morning standup meetings. Blend while your IDE loads.</p>
+                        </div>
+                        
+                        <h2>Recipe 2: Microwave Egg Mug</h2>
+                        <p><strong>Ingredients:</strong></p>
+                        <ul>
+                            <li>2 eggs</li>
+                            <li>2 tablespoons chopped vegetables</li>
+                            <li>1 tablespoon cheese</li>
+                            <li>Salt and pepper</li>
+                        </ul>
+                        
+                        <p><strong>Instructions:</strong></p>
+                        <ol>
+                            <li>Spray mug with oil</li>
+                            <li>Whisk eggs with other ingredients</li>
+                            <li>Microwave for 90 seconds</li>
+                            <li>Eat directly from mug (no dishes!)</li>
+                        </ol>
+                        
+                        <h2>Nutritional Breakdown</h2>
+                        <p>Each recipe provides 20-30g protein, complex carbs, and healthy fats. Perfect for maintaining focus during coding marathons.</p>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 2 ======
+            2: {
+                title: "Build Your First Website in 1 Hour",
+                category: "tech",
+                excerpt: "Step-by-step HTML/CSS tutorial for complete beginners.",
+                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                readTime: "7 min",
+                date: "March 14, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #3182ce;">Tech</span>
+                        <h1 class="article-title">Build Your First Website in 1 Hour</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 7 min read</span>
+                            <span><i class="far fa-calendar"></i> March 14, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0" alt="Web Development" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>What You'll Build</h2>
+                        <p>In this tutorial, you'll create a personal portfolio website with:</p>
+                        <ul>
+                            <li>Responsive navigation</li>
+                            <li>About me section</li>
+                            <li>Project showcase</li>
+                            <li>Contact form</li>
+                        </ul>
+                        
+                        <h2>Step 1: The HTML Structure</h2>
+                        <p>Create a file called <code>index.html</code> and add:</p>
+                        
+                        <div style="background: #f7fafc; padding: 20px; border-radius: 8px; font-family: monospace; overflow-x: auto;">
+                            &lt;!DOCTYPE html&gt;<br>
+                            &lt;html lang="en"&gt;<br>
+                            &lt;head&gt;<br>
+                            &nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+                            &nbsp;&nbsp;&lt;title&gt;My Portfolio&lt;/title&gt;<br>
+                            &lt;/head&gt;<br>
+                            &lt;body&gt;<br>
+                            &nbsp;&nbsp;&lt;h1&gt;Hello World!&lt;/h1&gt;<br>
+                            &lt;/body&gt;<br>
+                            &lt;/html&gt;
+                        </div>
+                        
+                        <h2>Step 2: Add Some Style</h2>
+                        <p>Create <code>style.css</code> and link it to your HTML:</p>
+                        
+                        <div style="background: #f7fafc; padding: 20px; border-radius: 8px; font-family: monospace; overflow-x: auto;">
+                            body {<br>
+                            &nbsp;&nbsp;font-family: Arial, sans-serif;<br>
+                            &nbsp;&nbsp;max-width: 1200px;<br>
+                            &nbsp;&nbsp;margin: 0 auto;<br>
+                            &nbsp;&nbsp;padding: 20px;<br>
+                            }<br><br>
+                            
+                            h1 {<br>
+                            &nbsp;&nbsp;color: #3182ce;<br>
+                            &nbsp;&nbsp;text-align: center;<br>
+                            }
+                        </div>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-lightbulb"></i> Pro Tip</h3>
+                            <p>Use VS Code with Live Server extension to see changes instantly.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 3 ======
+            3: {
+                title: "Best Gaming Setup Under $500",
+                category: "gaming",
+                excerpt: "Create the ultimate gaming station without breaking the bank.",
+                image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                readTime: "5 min",
+                date: "March 13, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #805ad5;">Gaming</span>
+                        <h1 class="article-title">Best Gaming Setup Under $500</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 5 min read</span>
+                            <span><i class="far fa-calendar"></i> March 13, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f" alt="Gaming Setup" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>The $500 Challenge</h2>
+                        <p>Yes, you can build a great gaming setup for under $500. Here's how to allocate your budget:</p>
+                        
+                        <h2>Budget Breakdown</h2>
+                        <ul>
+                            <li><strong>PC/Console:</strong> $275 (55%)</li>
+                            <li><strong>Monitor:</strong> $125 (25%)</li>
+                            <li><strong>Peripherals:</strong> $100 (20%)</li>
+                        </ul>
+                        
+                        <h2>Option 1: PC Build</h2>
+                        <p><strong>Ryzen 5 5600G Build ($275):</strong></p>
+                        <ul>
+                            <li>CPU: Ryzen 5 5600G ($129)</li>
+                            <li>Motherboard: A520M ($65)</li>
+                            <li>RAM: 16GB DDR4 ($35)</li>
+                            <li>SSD: 500GB NVMe ($35)</li>
+                            <li>Case + PSU Combo ($50)</li>
+                        </ul>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-gamepad"></i> Performance</h3>
+                            <p>This setup runs Fortnite at 85-100 FPS on medium settings. Perfect for esports titles.</p>
+                        </div>
+                        
+                        <h2>Option 2: Console Setup</h2>
+                        <p><strong>Xbox Series S Bundle ($500):</strong></p>
+                        <ul>
+                            <li>Xbox Series S: $300</li>
+                            <li>Monitor: $125</li>
+                            <li>Extra Controller: $50</li>
+                            <li>Headset: $25</li>
+                        </ul>
+                        
+                        <p>Includes Game Pass with 100+ games.</p>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 4 ======
+            4: {
+                title: "Gamer Fuel: Energy-Boosting Snacks",
+                category: "food",
+                excerpt: "Healthy snacks that keep you energized during long gaming sessions.",
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                readTime: "4 min",
+                date: "March 12, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #e53e3e;">Food</span>
+                        <h1 class="article-title">Gamer Fuel: Energy-Boosting Snacks</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 4 min read</span>
+                            <span><i class="far fa-calendar"></i> March 12, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Healthy Snacks" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>The Gaming Snack Problem</h2>
+                        <p>Most gamers reach for chips and soda, leading to energy crashes during important matches. These snacks provide sustained energy.</p>
+                        
+                        <h2>Snack 1: Protein Energy Balls</h2>
+                        <p><strong>Ingredients:</strong></p>
+                        <ul>
+                            <li>1 cup oats</li>
+                            <li>½ cup peanut butter</li>
+                            <li>¼ cup honey</li>
+                            <li>2 scoops protein powder</li>
+                            <li>¼ cup chocolate chips</li>
+                        </ul>
+                        
+                        <p><strong>Make during loading screens:</strong> Mix, roll into balls, refrigerate.</p>
+                        
+                        <h2>Why These Work</h2>
+                        <p>No sugar crashes, high protein, one-hand friendly (no messy fingers on controllers).</p>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 5 ======
+            5: {
+                title: "How to Protect Your Gaming Accounts",
+                category: "tech",
+                excerpt: "Essential security tips to keep your gaming profiles safe from hackers.",
+                image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                readTime: "6 min",
+                date: "March 11, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #3182ce;">Tech</span>
+                        <h1 class="article-title">How to Protect Your Gaming Accounts</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 6 min read</span>
+                            <span><i class="far fa-calendar"></i> March 11, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71" alt="Account Security" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>The Reality of Gaming Account Hacks</h2>
+                        <p>Every day, thousands of gaming accounts are stolen. Your Steam, Epic Games, and PlayStation accounts are valuable targets.</p>
+                        
+                        <h2>Essential Security Measures</h2>
+                        <p><strong>1. Enable Two-Factor Authentication (2FA)</strong></p>
+                        <p>This is non-negotiable. Use Google Authenticator or Authy, NOT SMS-based 2FA.</p>
+                        
+                        <p><strong>2. Use Unique Passwords</strong></p>
+                        <p>Never reuse passwords across platforms. Use a password manager like Bitwarden.</p>
+                        
+                        <p><strong>3. Beware of Phishing Scams</strong></p>
+                        <p>Never click "free V-Bucks" or "Steam gift card" links in Discord or emails.</p>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-shield-alt"></i> Pro Tip</h3>
+                            <p>Create a separate email JUST for gaming accounts. Never use it for anything else.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 6 ======
+            6: {
+                title: "Mobile Games That Pay Real Money",
+                category: "gaming",
+                excerpt: "Legit mobile games that actually let you earn cash and gift cards.",
+                image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                readTime: "8 min",
+                date: "March 10, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #805ad5;">Gaming</span>
+                        <h1 class="article-title">Mobile Games That Pay Real Money</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 8 min read</span>
+                            <span><i class="far fa-calendar"></i> March 10, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd" alt="Mobile Games" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>Real vs Fake Money Games</h2>
+                        <p>Most "earn money" games are scams. After testing 50+ apps, these are the legitimate ones.</p>
+                        
+                        <h2>Legitimate Games That Pay</h2>
+                        <p><strong>1. Mistplay</strong></p>
+                        <p>Play new games, earn points, redeem for gift cards. Average: $5-10 per month.</p>
+                        
+                        <p><strong>2. Swagbucks Games</strong></p>
+                        <p>Complete offers within games, earn SB points, cash out via PayPal. Average: $10-20 per month.</p>
+                        
+                        <p><strong>3. Google Opinion Rewards</strong></p>
+                        <p>Answer surveys, earn Google Play credit. Perfect for in-app purchases.</p>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-money-bill-wave"></i> Realistic Expectations</h3>
+                            <p>Don't expect to get rich. These games provide pocket money, not a full income.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 7 (You already have this) ======
+            7: {
+                title: "Koko and Koose: The Ultimate Ghanaian Breakfast Combo",
+                category: "food",
+                excerpt: "Learn how to make authentic Hausa koko (spicy millet porridge) paired with perfectly fried koose (bean cakes).",
+                image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543",
+                readTime: "12 min",
+                date: "March 17, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #e53e3e;">Food</span>
+                        <h1 class="article-title">Koko and Koose: The Ultimate Ghanaian Breakfast Combo</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 12 min read</span>
+                            <span><i class="far fa-calendar"></i> March 17, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543" alt="Traditional Ghanaian Breakfast" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>Why This Combo is Perfect for Ghanaian Mornings</h2>
+                        <p>As someone who grew up in Northern Ghana, I've seen how koko and koose fuel entire families for busy mornings. This combination isn't just food—it's cultural heritage in a bowl.</p>
+                        
+                        <h2>Authentic Koko (Millet Porridge) Recipe</h2>
+                        <p><strong>Ingredients:</strong></p>
+                        <ul>
+                            <li>2 cups millet flour (local name: "akple flour")</li>
+                            <li>8 cups water</li>
+                            <li>1 teaspoon ginger powder</li>
+                            <li>½ teaspoon cloves (optional)</li>
+                            <li>Pinch of salt</li>
+                            <li>Sugar to taste</li>
+                        </ul>
+                        
+                        <p><strong>Instructions:</strong></p>
+                        <ol>
+                            <li>Mix millet flour with 2 cups cold water to form smooth paste</li>
+                            <li>Boil remaining 6 cups water in large pot</li>
+                            <li>Slowly whisk in millet paste, stirring constantly</li>
+                            <li>Add ginger and cloves, reduce heat to low</li>
+                            <li>Simmer for 25-30 minutes, stirring every 5 minutes</li>
+                            <li>Add salt and sugar to taste</li>
+                        </ol>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-lightbulb"></i> Pro Tip</h3>
+                            <p>For authentic Hausa-style koko, use slightly fermented millet flour. Leave the flour mixed with water overnight for that distinctive tangy flavor.</p>
+                        </div>
+                        
+                        <h2>Perfect Koose (Bean Cakes) Every Time</h2>
+                        <p>Most people struggle with koose that are either too dense or fall apart. Here's my foolproof method:</p>
+                        
+                        <p><strong>Secret Ingredients:</strong></p>
+                        <ul>
+                            <li>2 cups black-eyed peas (soaked overnight)</li>
+                            <li>1 medium onion</li>
+                            <li>2 scotch bonnet peppers (adjust to taste)</li>
+                            <li>1 teaspoon salt</li>
+                            <li>Oil for deep frying</li>
+                        </ul>
+                        
+                        <p><strong>The Trick:</strong> Blend the beans with minimal water—just enough to get a thick paste. The thicker the batter, the fluffier the koose.</p>
+                        
+                        <h2>Serving Suggestions</h2>
+                        <p>In my family, we serve koko in calabash bowls with koose on the side. The traditional way is to dip koose into the koko, but many Ghanaians now prefer to crumble koose into the porridge.</p>
+                        
+                        <h2>Nutritional Benefits</h2>
+                        <p>This breakfast provides sustained energy. The millet offers complex carbs, while the beans provide protein. Perfect for students, farmers, or anyone with a long day ahead.</p>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-utensils"></i> Modern Twist</h3>
+                            <p>For a quicker version, use ready-made millet flour from local markets. Look for "koko flour" which is pre-spiced and saves 15 minutes of cooking time.</p>
+                        </div>
+                        
+                        <h2>Final Thoughts</h2>
+                        <p>This breakfast combo has sustained generations of Ghanaians. It's affordable (under GH₵10 for 4 servings), nutritious, and deeply satisfying. Give it a try this weekend and taste authentic Ghanaian morning tradition.</p>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 8 (You already have this) ======
+            8: {
+                title: "MTN vs Vodafone: Which Has Better Night Data Bundles in 2024?",
+                category: "tech",
+                excerpt: "I tested both networks for 30 days. Here's which provider gives you more nighttime data for your money.",
+                image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3",
+                readTime: "7 min",
+                date: "March 17, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #3182ce;">Tech</span>
+                        <h1 class="article-title">MTN vs Vodafone: Which Has Better Night Data Bundles in 2024?</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 7 min read</span>
+                            <span><i class="far fa-calendar"></i> March 17, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3" alt="Mobile Networks Comparison" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>The 30-Day Network Test</h2>
+                        <p>As a student who studies at night, I depend on affordable data. I bought SIM cards from both MTN and Vodafone and tested their night bundles for 30 days. Here's what I discovered.</p>
+                        
+                        <h2>Price Comparison (March 2024)</h2>
+                        <p><strong>MTN Night Bundle:</strong></p>
+                        <ul>
+                            <li>GH₵5 = 2GB (12am-5am)</li>
+                            <li>GH₵10 = 5GB (12am-5am)</li>
+                            <li>Validity: 7 days</li>
+                        </ul>
+                        
+                        <p><strong>Vodafone Night Bundle:</strong></p>
+                        <ul>
+                            <li>GH₵5 = 3GB (11pm-6am)</li>
+                            <li>GH₵10 = 7GB (11pm-6am)</li>
+                            <li>Validity: 7 days</li>
+                        </ul>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-money-bill-wave"></i> Clear Winner on Paper</h3>
+                            <p>Vodafone offers more data (3GB vs 2GB for GH₵5) and longer hours (7 hours vs 5 hours). But there's more to consider...</p>
+                        </div>
+                        
+                        <h2>Real-World Speed Test</h2>
+                        <p>I tested download speeds in 3 locations in Accra:</p>
+                        
+                        <p><strong>Average Download Speeds (12am-2am):</strong></p>
+                        <ul>
+                            <li><strong>MTN:</strong> 8-12 Mbps (consistent)</li>
+                            <li><strong>Vodafone:</strong> 15-20 Mbps (peak), 5-8 Mbps (crowded areas)</li>
+                        </ul>
+                        
+                        <p><strong>Key Finding:</strong> Vodafone is faster when it works, but MTN is more consistent across different locations.</p>
+                        
+                        <h2>The Hidden Costs</h2>
+                        <p>What they don't tell you:</p>
+                        
+                        <p><strong>MTN:</strong></p>
+                        <ul>
+                            <li>Works during "light off" periods</li>
+                            <li>Can be used for hotspot (tested with 2 devices)</li>
+                            <li>Rolls over unused data to next night</li>
+                        </ul>
+                        
+                        <p><strong>Vodafone:</strong></p>
+                        <ul>
+                            <li>Sometimes struggles during dumsor</li>
+                            <li>Hotspot usage limited after 2GB</li>
+                            <li>No rollover - use it or lose it</li>
+                        </ul>
+                        
+                        <h2>Best for Different Users</h2>
+                        <p><strong>Choose MTN if you:</strong></p>
+                        <ul>
+                            <li>Need reliability over speed</li>
+                            <li>Live in area with frequent power outages</li>
+                            <li>Want to use hotspot for multiple devices</li>
+                            <li>Value consistency</li>
+                        </ul>
+                        
+                        <p><strong>Choose Vodafone if you:</strong></p>
+                        <ul>
+                            <li>Need maximum data for your money</li>
+                            <li>Live in areas with strong Vodafone signal</li>
+                            <li>Download large files quickly</li>
+                            <li>Don't mind occasional speed drops</li>
+                        </ul>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-mobile-alt"></i> Pro Tip for Students</h3>
+                            <p>Buy MTN for reliability during exams when you can't afford connection drops. Use Vodafone for regular downloading when you need more data.</p>
+                        </div>
+                        
+                        <h2>How to Activate (USSD Codes)</h2>
+                        <p><strong>MTN:</strong> Dial *138# → Choose "Night Bundle"</p>
+                        <p><strong>Vodafone:</strong> Dial *110# → Choose "Night Surfer"</p>
+                        
+                        <h2>Final Verdict</h2>
+                        <p>After 30 days of testing, I now use both:</p>
+                        <ul>
+                            <li><strong>MTN:</strong> For important video calls and studying</li>
+                            <li><strong>Vodafone:</strong> For downloading lectures and entertainment</li>
+                        </ul>
+                        <p>The "better" bundle depends on your specific needs and location. Test both in your area before committing.</p>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 9 (You already have this) ======
+            9: {
+                title: "How to Win Local FIFA Tournaments in Ghana Gaming Cafés",
+                category: "gaming",
+                excerpt: "After winning 3 local tournaments, I'm sharing the strategies that work against Ghanaian FIFA players.",
+                image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8",
+                readTime: "9 min",
+                date: "March 17, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #805ad5;">Gaming</span>
+                        <h1 class="article-title">How to Win Local FIFA Tournaments in Ghana Gaming Cafés</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 9 min read</span>
+                            <span><i class="far fa-calendar"></i> March 17, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8" alt="Gaming Tournament" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>Understanding Ghanaian FIFA Culture</h2>
+                        <p>Ghanaian FIFA players have a unique style developed in gaming cafés. They're aggressive, love skill moves, and play with high pressure. After losing my first 5 tournaments, I adapted and started winning.</p>
+                        
+                        <h2>Common Ghanaian Player Patterns</h2>
+                        <p><strong>Pattern 1: Early Pressure</strong></p>
+                        <p>Most Ghanaian players press high from kickoff. They expect you to panic and lose possession.</p>
+                        <p><strong>Counter:</strong> Pass back to goalkeeper, switch to long balls, or use L1/LB dribbling to maintain possession.</p>
+                        
+                        <p><strong>Pattern 2: Skill Move Spam</strong></p>
+                        <p>Expect constant ball rolls, heel-to-heels, and elastico attempts.</p>
+                        <p><strong>Counter:</strong> Don't commit to tackles. Use jockeying (L2/LT) and wait for them to make a mistake.</p>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-gamepad"></i> Tournament Reality</h3>
+                            <p>Most cafés use older FIFA versions (FIFA 22/23) because they're cheaper. Practice on the specific version the tournament uses.</p>
+                        </div>
+                        
+                        <h2>Team Selection Strategy</h2>
+                        <p><strong>DO NOT pick:</strong></p>
+                        <ul>
+                            <li>Barcelona (everyone uses them, too predictable)</li>
+                            <li>Manchester City (high skill ceiling, hard under pressure)</li>
+                            <li>PSG (everyone knows how to counter Mbappé)</li>
+                        </ul>
+                        
+                        <p><strong>DO pick:</strong></p>
+                        <ul>
+                            <li><strong>Liverpool:</strong> Fast, aggressive, perfect for Ghanaian style</li>
+                            <li><strong>Bayern Munich:</strong> Balanced and less predictable</li>
+                            <li><strong>Atlético Madrid:</strong> Defensive solidity frustrates aggressive players</li>
+                        </ul>
+                        
+                        <h2>Tournament-Specific Tactics</h2>
+                        <p><strong>Custom Tactics That Work:</strong></p>
+                        <ul>
+                            <li><strong>Defensive Style:</strong> Pressure on Heavy Touch</li>
+                            <li><strong>Width:</strong> 4 bars (narrow to counter through balls)</li>
+                            <li><strong>Depth:</strong> 6 bars (high line to catch offside traps)</li>
+                            <li><strong>Offensive Style:</strong> Fast Build Up</li>
+                            <li><strong>Players in Box:</strong> 5 bars</li>
+                        </ul>
+                        
+                        <h2>Handling Café Conditions</h2>
+                        <p>Gaming cafés present unique challenges:</p>
+                        
+                        <p><strong>Problem 1: Old Controllers</strong></p>
+                        <p>Sticky buttons and worn-out analog sticks are common.</p>
+                        <p><strong>Solution:</strong> Test all buttons before match. If R2/RT is sticky, avoid sprint-heavy play.</p>
+                        
+                        <p><strong>Problem 2: Crowd Distractions</strong></p>
+                        <p>People will shout, cheer, and try to distract you.</p>
+                        <p><strong>Solution:</strong> Bring headphones (if allowed) or focus on the screen, not the crowd.</p>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-trophy"></i> Prize Money Reality</h3>
+                            <p>Most tournaments offer GH₵50-200 for first place. Some cafés pay in "café credit" instead of cash. Always ask before registering.</p>
+                        </div>
+                        
+                        <h2>Warm-Up Routine</h2>
+                        <p>Arrive 1 hour early and:</p>
+                        <ol>
+                            <li>Play 2-3 casual matches to adapt to controller</li>
+                            <li>Test all skill moves you plan to use</li>
+                            <li>Practice set pieces (crucial in tight matches)</li>
+                            <li>Check if there's input lag on the TV/monitor</li>
+                        </ol>
+                        
+                        <h2>Mental Game</h2>
+                        <p>Ghanaian players love mind games:</p>
+                        <ul>
+                            <li><strong>If they're talking trash:</strong> Stay silent and focus</li>
+                            <li><strong>If they're watching your screen:</strong> Change camera angle</li>
+                            <li><strong>If they're celebrating excessively:</strong> Use it as motivation</li>
+                        </ul>
+                        
+                        <h2>Final Tournament Day Tips</h2>
+                        <ul>
+                            <li><strong>Eat light:</strong> Heavy food makes you sluggish</li>
+                            <li><strong>Stay hydrated:</strong> Bring your own water</li>
+                            <li><strong>Dress comfortably:</strong> Cafés can get hot</li>
+                            <li><strong>Have entry fee ready:</strong> Usually GH₵5-10</li>
+                            <li><strong>Know the rules:</strong> Some ban certain teams or tactics</li>
+                        </ul>
+                        
+                        <h2>My Winning Formula</h2>
+                        <p>After 3 tournament wins, here's my guaranteed approach:</p>
+                        <ol>
+                            <li>Pick Liverpool (consistent and fast)</li>
+                            <li>Play possession first half (assess opponent)</li>
+                            <li>Second half: switch to counter attacks</li>
+                            <li>If winning after 70 minutes: switch to defensive</li>
+                            <li>Never quit mentally - Ghanaian players fight to the end</li>
+                        </ol>
+                        
+                        <p>Remember: The goal is to win, not to play beautiful football. Do whatever it takes within the rules.</p>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 10 ======
+            10: {
+                title: "How to Enjoy Street Food Safely in Accra",
+                category: "food",
+                excerpt: "After getting food poisoning twice, I learned these essential tips for identifying clean street food vendors in Ghana.",
+                image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
+                readTime: "6 min",
+                date: "March 16, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #e53e3e;">Food</span>
+                        <h1 class="article-title">How to Enjoy Street Food Safely in Accra</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 6 min read</span>
+                            <span><i class="far fa-calendar"></i> March 16, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Street Food" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>My Food Poisoning Lessons</h2>
+                        <p>After two unpleasant hospital visits, I developed a system to identify safe street food vendors in Accra. Here's what I learned.</p>
+                        
+                        <h2>5 Signs of a Clean Vendor</h2>
+                        <p><strong>1. They Handle Money Separately</strong></p>
+                        <p>Watch if they use one hand for money, another for food. Red flag: same hand for both.</p>
+                        
+                        <p><strong>2. Fresh Cooking Oil</strong></p>
+                        <p>Dark, foamy oil = reused many times. Fresh oil is golden and clear.</p>
+                        
+                        <p><strong>3. Popular with Locals</strong></p>
+                        <p>A long queue of locals means quick turnover and fresh food.</p>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-utensils"></i> Pro Tip</h3>
+                            <p>Eat during peak hours (12-2pm, 6-8pm). Food is freshest and hasn't been sitting.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 11 ======
+            11: {
+                title: "Best Smartphones Under GH₵2,000 in Ghana (2024)",
+                category: "tech",
+                excerpt: "After testing 8 different phones available in Ghana, here are my top picks for budget smartphones that actually perform well.",
+                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+                readTime: "9 min",
+                date: "March 16, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #3182ce;">Tech</span>
+                        <h1 class="article-title">Best Smartphones Under GH₵2,000 in Ghana (2024)</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 9 min read</span>
+                            <span><i class="far fa-calendar"></i> March 16, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" alt="Smartphones" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>My Testing Methodology</h2>
+                        <p>I bought and used each phone for 2 weeks, testing battery life, camera, performance, and durability in Ghanaian conditions.</p>
+                        
+                        <h2>Top 3 Picks</h2>
+                        <p><strong>1. Tecno Spark 10 Pro (GH₵1,800)</strong></p>
+                        <p>Best camera in this range. 32MP front camera perfect for selfies.</p>
+                        
+                        <p><strong>2. Infinix Hot 30 (GH₵1,950)</strong></p>
+                        <p>Best for gaming. 90Hz display and good thermal management.</p>
+                        
+                        <p><strong>3. Samsung Galaxy A05s (GH₵1,999)</strong></p>
+                        <p>Best software experience. 3 years of Android updates guaranteed.</p>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-mobile-alt"></i> Where to Buy</h3>
+                            <p>Check Teledawg, Phone Place, or official brand stores. Avoid unknown sellers on Facebook.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 12 ======
+            12: {
+                title: "How to Save 50% on Mobile Data in Ghana",
+                category: "tech",
+                excerpt: "Living with expensive data plans taught me these 10 practical tips to reduce your monthly data consumption significantly.",
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31",
+                readTime: "7 min",
+                date: "March 16, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #3182ce;">Tech</span>
+                        <h1 class="article-title">How to Save 50% on Mobile Data in Ghana</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 7 min read</span>
+                            <span><i class="far fa-calendar"></i> March 16, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31" alt="Data Saving" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>The Data Drain</h2>
+                        <p>Most Ghanaians use 2-3GB more data than they need each month. Here's how to cut that waste.</p>
+                        
+                        <h2>Top 5 Data-Saving Tips</h2>
+                        <p><strong>1. Use Data Saver Mode</strong></p>
+                        <p>Android and iOS have built-in data savers that block background data.</p>
+                        
+                        <p><strong>2. Download YouTube Videos on Wi-Fi</strong></p>
+                        <p>YouTube Premium allows downloads. Or use YouTube Go for free downloads.</p>
+                        
+                        <p><strong>3. Compress Images Before Sending</strong></p>
+                        <p>Use "Reduce file size" option in WhatsApp before sending photos.</p>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-wifi"></i> Pro Tip</h3>
+                            <p>Schedule large downloads for night bundle hours. Most networks offer cheaper night data.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 13 ======
+            13: {
+                title: "How I Landed My First Tech Job in Ghana Without a Degree",
+                category: "tech",
+                excerpt: "My journey from knowing nothing about coding to getting hired as a web developer in Accra - and how you can do it too.",
+                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0",
+                readTime: "11 min",
+                date: "March 16, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #3182ce;">Tech</span>
+                        <h1 class="article-title">How I Landed My First Tech Job in Ghana Without a Degree</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 11 min read</span>
+                            <span><i class="far fa-calendar"></i> March 16, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0" alt="Tech Career" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>My Background</h2>
+                        <p>No computer science degree. No connections. Just 8 months of focused learning. Here's my exact path.</p>
+                        
+                        <h2>Step-by-Step Learning Path</h2>
+                        <p><strong>Months 1-3: HTML, CSS, JavaScript Basics</strong></p>
+                        <p>FreeCodeCamp and YouTube tutorials. Built 5 basic projects.</p>
+                        
+                        <p><strong>Months 4-6: React.js and Node.js</strong></p>
+                        <p>Learned MERN stack. Built a full e-commerce site.</p>
+                        
+                        <p><strong>Months 7-8: Portfolio and Job Search</strong></p>
+                        <p>Created portfolio, applied to 50+ companies, got 3 interviews, 1 offer.</p>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-graduation-cap"></i> Key Insight</h3>
+                            <p>Ghanaian tech companies care more about what you can build than where you studied.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 14 ======
+            14: {
+                title: "5 Mobile Games That Actually Pay Real Money in Ghana",
+                category: "gaming",
+                excerpt: "After testing dozens of 'earn money' games, these are the legitimate ones that actually let you cash out to Mobile Money.",
+                image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd",
+                readTime: "8 min",
+                date: "March 16, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #805ad5;">Gaming</span>
+                        <h1 class="article-title">5 Mobile Games That Actually Pay Real Money in Ghana</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 8 min read</span>
+                            <span><i class="far fa-calendar"></i> March 16, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd" alt="Mobile Money Games" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>Scam Warning</h2>
+                        <p>90% of "earn money" games are scams. They make you watch endless ads then never pay. These 5 actually work.</p>
+                        
+                        <h2>Legitimate Games for Ghanaians</h2>
+                        <p><strong>1. Money Well (Pays to MTN MoMo)</strong></p>
+                        <p>Complete surveys and small tasks. Minimum cashout: GH₵5. Average: GH₵100/month.</p>
+                        
+                        <p><strong>2. Toloka (Pays via Skrill to bank)</strong></p>
+                        <p>Micro-tasks from Yandex. Need bank account for withdrawal.</p>
+                        
+                        <p><strong>3. Braintest (Pays via PayPal)</strong></p>
+                        <p>Memory and puzzle games. Need PayPal account.</p>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-money-check-alt"></i> Payment Reality</h3>
+                            <p>Most apps pay via PayPal. For MoMo payments, you'll need to convert via third-party services.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 15 ======
+            15: {
+                title: "Gaming Setup Under GH₵500 for Students in Ghana",
+                category: "gaming",
+                excerpt: "You don't need an expensive PC to enjoy gaming. Here's my budget setup using affordable Android devices and free games.",
+                image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575",
+                readTime: "6 min",
+                date: "March 16, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #805ad5;">Gaming</span>
+                        <h1 class="article-title">Gaming Setup Under GH₵500 for Students in Ghana</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 6 min read</span>
+                            <span><i class="far fa-calendar"></i> March 16, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575" alt="Budget Gaming" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>The Student Gaming Reality</h2>
+                        <p>As a university student, I couldn't afford a gaming PC. This GH₵500 setup got me through 4 years of gaming.</p>
+                        
+                        <h2>Budget Breakdown</h2>
+                        <ul>
+                            <li><strong>Android Phone:</strong> GH₵300 (Tecno Spark series)</li>
+                            <li><strong>Gamepad:</strong> GH₵80 (iPega controller)</li>
+                            <li><strong>Phone Mount:</strong> GH₵20</li>
+                            <li><strong>Earphones:</strong> GH₵50</li>
+                            <li><strong>Power Bank:</strong> GH₵50 (for campus power outages)</li>
+                        </ul>
+                        
+                        <h2>Best Free Games for This Setup</h2>
+                        <p><strong>1. Call of Duty Mobile</strong></p>
+                        <p>Runs smoothly on budget phones. Great with gamepad.</p>
+                        
+                        <p><strong>2. Genshin Impact</strong></p>
+                        <p>Surprisingly good on medium settings. Beautiful graphics.</p>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-gamepad"></i> Pro Tip</h3>
+                            <p>Use GFX Tool apps to optimize game graphics for your specific phone model.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 16 ======
+            16: {
+                title: "Best Games to Play with Friends at University in Ghana",
+                category: "gaming",
+                excerpt: "These are the games my friends and I actually play together on campus - perfect for group gaming sessions.",
+                image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f",
+                readTime: "5 min",
+                date: "March 16, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #805ad5;">Gaming</span>
+                        <h1 class="article-title">Best Games to Play with Friends at University in Ghana</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 5 min read</span>
+                            <span><i class="far fa-calendar"></i> March 16, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f" alt="Group Gaming" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>Campus Gaming Culture</h2>
+                        <p>University in Ghana means limited data, different phones, and finding games everyone can play together.</p>
+                        
+                        <h2>Top Group Games</h2>
+                        <p><strong>1. Among Us (Free)</strong></p>
+                        <p>Perfect for 4-10 players. Works on all phones. Minimal data usage.</p>
+                        
+                        <p><strong>2. 8 Ball Pool (Free)</strong></p>
+                        <p>Tournament mode lets 8 people compete. Great for casual gaming.</p>
+                        
+                        <p><strong>3. Brawl Stars (Free)</strong></p>
+                        <p>3v3 matches perfect for friend groups. Regular updates.</p>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-users"></i> Hosting Tips</h3>
+                            <p>Use someone's mobile hotspot if hall Wi-Fi is slow. Take turns hosting to share data costs.</p>
+                        </div>
+                    </div>
+                `
+            }
+        };
+        
+        // Load the article
+        function loadArticle() {
+            const loadingEl = document.getElementById('loading');
+            const contentEl = document.getElementById('article-content');
+            const backButton = document.getElementById('back-button');
+            
+            if (!articleId || !articleDatabase[articleId]) {
+                loadingEl.innerHTML = `
+                    <h2>Article Not Found</h2>
+                    <p>The article you're looking for doesn't exist.</p>
+                    <a href="index.html" class="back-button">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </a>
+                `;
+                return;
+            }
+            
+            const article = articleDatabase[articleId];
+            
+            // Update page title
+            document.title = `${article.title} - Digital Life Hub`;
+            
+            // Hide loading, show content
+            setTimeout(() => {
+                loadingEl.style.display = 'none';
+                contentEl.innerHTML = article.content;
+                contentEl.style.display = 'block';
+                backButton.style.display = 'inline-block';
+                
+                // Update view count
+                updateViewCount(articleId);
+            }, 1000);
         }
+        
+        // Track article views
+        function updateViewCount(articleId) {
+            let views = JSON.parse(localStorage.getItem('articleViews') || '{}');
+            views[articleId] = (views[articleId] || 0) + 1;
+            localStorage.setItem('articleViews', JSON.stringify(views));
+            
+            // Update view count on page
+            const viewCountEl = document.getElementById('view-count');
+            if (viewCountEl) {
+                viewCountEl.textContent = views[articleId];
+            }
+        }
+        
+        // Load article when page is ready
+        document.addEventListener('DOMContentLoaded', loadArticle);
     </script>
 </body>
 </html>
