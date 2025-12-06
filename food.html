@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food & Recipes - Digital Life Hub</title>
+    <title>Ghanaian Food & Recipes - Digital Life Hub</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .category-hero {
             background: linear-gradient(rgba(229, 62, 62, 0.9), rgba(229, 62, 62, 0.7)), 
-                        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+                        url('https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -70,6 +70,11 @@
         .back-home:hover {
             background: #2c5282;
         }
+        .ghana-flag {
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
@@ -83,7 +88,7 @@
             <nav>
                 <ul>
                     <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="food.html" class="nav-food"><i class="fas fa-utensils"></i> Food</a></li>
+                    <li><a href="food.html" class="nav-food active"><i class="fas fa-utensils"></i> Ghanaian Food</a></li>
                     <li><a href="tech.html" class="nav-tech"><i class="fas fa-laptop-code"></i> Tech</a></li>
                     <li><a href="gaming.html" class="nav-gaming"><i class="fas fa-gamepad"></i> Gaming</a></li>
                     <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
@@ -96,21 +101,24 @@
     <!-- Food Hero Section -->
     <section class="category-hero">
         <div class="container">
-            <h1 class="category-title"><i class="fas fa-utensils"></i> Food & Recipes</h1>
-            <p style="font-size: 20px; max-width: 800px; margin: 0 auto;">Delicious recipes, cooking tips, and food hacks for everyone!</p>
+            <h1 class="category-title">
+                <i class="fas fa-utensils"></i> Ghanaian Food 
+                <span class="ghana-flag">🇬🇭</span>
+            </h1>
+            <p style="font-size: 20px; max-width: 800px; margin: 0 auto;">Authentic Ghanaian recipes, cooking tips, and traditional meals from across Ghana!</p>
             
             <div class="category-stats">
                 <div class="stat-box">
-                    <div style="font-size: 24px; font-weight: bold;">150+</div>
-                    <div>Recipes</div>
+                    <div style="font-size: 24px; font-weight: bold;">50+</div>
+                    <div>Traditional Recipes</div>
                 </div>
                 <div class="stat-box">
                     <div style="font-size: 24px; font-weight: bold;">10+</div>
-                    <div>Cuisines</div>
+                    <div>Regions Covered</div>
                 </div>
                 <div class="stat-box">
-                    <div style="font-size: 24px; font-weight: bold;">5-30 min</div>
-                    <div>Prep Time</div>
+                    <div style="font-size: 24px; font-weight: bold;">100%</div>
+                    <div>Authentic</div>
                 </div>
             </div>
         </div>
@@ -119,46 +127,95 @@
     <div class="container">
         <!-- Filter Buttons -->
         <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">All Recipes</button>
+            <button class="filter-btn active" data-filter="all">All Ghanaian Food</button>
+            <button class="filter-btn" data-filter="stew">Stews & Soups</button>
+            <button class="filter-btn" data-filter="rice">Rice Dishes</button>
+            <button class="filter-btn" data-filter="banku">Banku & Fufu</button>
+            <button class="filter-btn" data-filter="street">Street Food</button>
             <button class="filter-btn" data-filter="breakfast">Breakfast</button>
-            <button class="filter-btn" data-filter="lunch">Lunch</button>
-            <button class="filter-btn" data-filter="dinner">Dinner</button>
-            <button class="filter-btn" data-filter="dessert">Desserts</button>
-            <button class="filter-btn" data-filter="quick">Quick Meals</button>
         </div>
 
-        <!-- Featured Recipes -->
-        <h2 style="margin: 40px 0 25px 0; color: #2d3748;">Featured Recipes</h2>
+        <!-- Featured Ghanaian Recipes -->
+        <h2 style="margin: 40px 0 25px 0; color: #2d3748;">
+            <i class="fas fa-star"></i> Popular Ghanaian Recipes
+        </h2>
         
         <div class="articles-grid" id="food-articles">
-            <!-- Food articles will be loaded by JavaScript -->
+            <!-- Ghanaian food articles will be loaded by JavaScript -->
             <div style="text-align: center; padding: 50px; color: #718096;">
                 <i class="fas fa-utensils fa-3x" style="margin-bottom: 20px; color: #e53e3e;"></i>
-                <h3>Loading delicious recipes...</h3>
-                <p>Food articles will appear here automatically when you add them.</p>
+                <h3>Loading Ghanaian recipes...</h3>
+                <p>Authentic Ghanaian recipes will appear here shortly.</p>
+            </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div style="text-align: center; margin: 40px 0;">
+            <button id="load-more-food" class="load-more-btn">Load More Recipes</button>
+            <div id="loading-food" style="display: none; margin-top: 20px;">
+                <i class="fas fa-spinner fa-spin"></i> Loading more Ghanaian recipes...
+            </div>
+        </div>
+
+        <!-- Ghanaian Food Culture -->
+        <div style="background: #fff5f5; padding: 30px; border-radius: 15px; margin: 40px 0;">
+            <h3 style="color: #2d3748;">
+                <i class="fas fa-flag"></i> Ghanaian Food Culture
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div style="background: white; padding: 20px; border-radius: 10px;">
+                    <h4><i class="fas fa-pepper-hot"></i> Spices & Ingredients</h4>
+                    <p style="font-size: 14px; color: #718096; margin-top: 10px;">
+                        Key ingredients: shito (black pepper sauce), garden eggs, kontomire, palm oil, and fresh fish.
+                    </p>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 10px;">
+                    <h4><i class="fas fa-map-marker-alt"></i> Regional Specialties</h4>
+                    <p style="font-size: 14px; color: #718096; margin-top: 10px;">
+                        From Ashanti fufu to Coastal kenkey and Northern tuo zaafi - each region has unique dishes.
+                    </p>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 10px;">
+                    <h4><i class="fas fa-utensil-spoon"></i> Traditional Cooking</h4>
+                    <p style="font-size: 14px; color: #718096; margin-top: 10px;">
+                        Most Ghanaian meals are cooked with a wooden spoon and served in a communal style.
+                    </p>
+                </div>
             </div>
         </div>
 
         <!-- Newsletter Section -->
         <div style="background: #f0fff4; padding: 30px; border-radius: 15px; margin: 40px 0; text-align: center;">
-            <h3><i class="fas fa-envelope"></i> Get Weekly Recipes</h3>
-            <p style="margin: 15px 0;">Subscribe to receive new recipes every week!</p>
+            <h3><i class="fas fa-envelope"></i> Get Weekly Ghanaian Recipes</h3>
+            <p style="margin: 15px 0;">Subscribe to receive authentic Ghanaian recipes every week!</p>
             <div style="max-width: 400px; margin: 20px auto;">
-                <input type="email" placeholder="Your email" style="width: 70%; padding: 12px; border: 2px solid #cbd5e0; border-radius: 5px;">
-                <button style="background: #e53e3e; color: white; border: none; padding: 12px 25px; border-radius: 5px; margin-left: 10px; font-weight: bold; cursor: pointer;">
+                <input type="email" id="food-email" placeholder="Your email" style="width: 70%; padding: 12px; border: 2px solid #cbd5e0; border-radius: 5px;">
+                <button id="food-subscribe-btn" style="background: #e53e3e; color: white; border: none; padding: 12px 25px; border-radius: 5px; margin-left: 10px; font-weight: bold; cursor: pointer;">
                     Subscribe
                 </button>
             </div>
         </div>
 
-        <!-- Popular Topics -->
-        <h2 style="margin: 40px 0 25px 0; color: #2d3748;">Popular Topics</h2>
+        <!-- Popular Ghanaian Dishes -->
+        <h2 style="margin: 40px 0 25px 0; color: #2d3748;">
+            <i class="fas fa-fire"></i> Must-Try Ghanaian Dishes
+        </h2>
         <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 40px;">
-            <span style="background: #fff5f5; color: #742a2a; padding: 10px 20px; border-radius: 20px; font-weight: bold;">Quick Breakfast</span>
-            <span style="background: #fff5f5; color: #742a2a; padding: 10px 20px; border-radius: 20px; font-weight: bold;">Healthy Lunch</span>
-            <span style="background: #fff5f5; color: #742a2a; padding: 10px 20px; border-radius: 20px; font-weight: bold;">Easy Dinner</span>
-            <span style="background: #fff5f5; color: #742a2a; padding: 10px 20px; border-radius: 20px; font-weight: bold;">Meal Prep</span>
-            <span style="background: #fff5f5; color: #742a2a; padding: 10px 20px; border-radius: 20px; font-weight: bold;">Budget Cooking</span>
+            <span style="background: #fff5f5; color: #742a2a; padding: 10px 20px; border-radius: 20px; font-weight: bold;">
+                <i class="fas fa-utensils"></i> Jollof Rice
+            </span>
+            <span style="background: #fff5f5; color: #742a2a; padding: 10px 20px; border-radius: 20px; font-weight: bold;">
+                <i class="fas fa-fish"></i> Banku & Tilapia
+            </span>
+            <span style="background: #fff5f5; color: #742a2a; padding: 10px 20px; border-radius: 20px; font-weight: bold;">
+                <i class="fas fa-mortar-pestle"></i> Fufu & Light Soup
+            </span>
+            <span style="background: #fff5f5; color: #742a2a; padding: 10px 20px; border-radius: 20px; font-weight: bold;">
+                <i class="fas fa-leaf"></i> Kontomire Stew
+            </span>
+            <span style="background: #fff5f5; color: #742a2a; padding: 10px 20px; border-radius: 20px; font-weight: bold;">
+                <i class="fas fa-drumstick-bite"></i> Waakye
+            </span>
         </div>
 
         <a href="index.html" class="back-home">
@@ -171,88 +228,420 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>DigitalLifeHub</h3>
-                    <p style="color: #a0aec0; margin-top: 10px;">Your ultimate guide to food, technology, and gaming lifestyle.</p>
+                    <h3>DigitalLifeHub 🇬🇭</h3>
+                    <p style="color: #a0aec0; margin-top: 10px;">Celebrating Ghanaian culture through food, technology, and gaming.</p>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Food Categories</h3>
+                    <h3>Ghanaian Food Types</h3>
                     <ul>
-                        <li><a href="food.html?filter=breakfast"><i class="fas fa-sun"></i> Breakfast</a></li>
-                        <li><a href="food.html?filter=lunch"><i class="fas fa-sun"></i> Lunch</a></li>
-                        <li><a href="food.html?filter=dinner"><i class="fas fa-moon"></i> Dinner</a></li>
-                        <li><a href="food.html?filter=dessert"><i class="fas fa-ice-cream"></i> Desserts</a></li>
+                        <li><a href="food.html?filter=stew"><i class="fas fa-pepper-hot"></i> Stews & Soups</a></li>
+                        <li><a href="food.html?filter=rice"><i class="fas fa-utensils"></i> Rice Dishes</a></li>
+                        <li><a href="food.html?filter=banku"><i class="fas fa-mortar-pestle"></i> Banku & Fufu</a></li>
+                        <li><a href="food.html?filter=street"><i class="fas fa-street-view"></i> Street Food</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>© 2024 DigitalLifeHub. All content is free to use with attribution.</p>
-                <p style="margin-top: 10px; font-size: 12px;">Food recipes are tested and approved by our team.</p>
+                <p>© 2024 DigitalLifeHub. Authentic Ghanaian recipes passed down through generations.</p>
+                <p style="margin-top: 10px; font-size: 12px;">All recipes are tested in Ghanaian kitchens with local ingredients.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Load food articles
-        document.addEventListener('DOMContentLoaded', function() {
-            // Filter functionality
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    const filter = this.getAttribute('data-filter');
-                    alert(`Filtering by: ${filter} (This would filter articles in a real site)`);
+ <script>
+    // Load and display REAL Ghanaian food articles
+    document.addEventListener('DOMContentLoaded', function() {
+        const foodContainer = document.getElementById('food-articles');
+        const loadMoreBtn = document.getElementById('load-more-food');
+        const loadingDiv = document.getElementById('loading-food');
+        
+        // All Ghanaian Food Articles
+        const allGhanaianFoodArticles = [
+            
+            {
+                id: 7,
+                title: "Koko and Koose: The Ultimate Ghanaian Breakfast Combo",
+                excerpt: "Learn how to make authentic Hausa koko (spicy millet porridge) paired with perfectly fried koose (bean cakes).",
+                image: "https://pikaso.cdnpk.net/private/production/2825455349/conversions/render-preview.jpg?token=exp=1765238400~hmac=b0bf04d7342bc77d1b61bd725a5f98be766289feb716ecf44333494f00a1bb6e",
+                readTime: "12 min",
+                date: "March 17, 2024",
+                category: "breakfast",
+                difficulty: "Medium",
+                servings: "4-6 people"
+            },
+            {
+                id: 17,
+                title: "Authentic Ghanaian Jollof Rice Recipe",
+                excerpt: "The secret to perfect Ghanaian jollof rice that wins every party. Smoked turkey makes all the difference!",
+                image: "https://pikaso.cdnpk.net/private/production/2825619715/conversions/render-preview.jpg?token=exp=1765238400~hmac=d7b0a54bb9460c4807a7faf8a19b787c76e5e098d5b3fec4ffef3ddbc2708c20",
+                readTime: "25 min",
+                date: "March 18, 2024",
+                category: "rice",
+                difficulty: "Medium",
+                servings: "6-8 people"
+            },
+            {
+                id: 18,
+                title: "Banku with Grilled Tilapia and Shito",
+                excerpt: "Step-by-step guide to making soft banku paired with perfectly grilled tilapia and homemade shito.",
+                image: "https://pikaso.cdnpk.net/private/production/2825631644/conversions/render-preview.jpg?token=exp=1765238400~hmac=13f834087ee60d92eca0ef9a114781d1aa528910b258d839b35288387bec620c",
+                readTime: "45 min",
+                date: "March 18, 2024",
+                category: "banku",
+                difficulty: "Hard",
+                servings: "4 people"
+            },
+            {
+                id: 19,
+                title: "Fufu with Goat Light Soup - Ashanti Style",
+                excerpt: "Traditional fufu preparation with goat light soup. Perfect for family gatherings and special occasions.",
+                image: "https://i.ytimg.com/vi/rv4Dg0Q-opc/maxresdefault.jpg",
+                readTime: "60 min",
+                date: "March 19, 2024",
+                category: "stew",
+                difficulty: "Hard",
+                servings: "4-6 people"
+            },
+            {
+                id: 20,
+                title: "Waakye: Ghana's Favorite Red Rice and Beans",
+                excerpt: "Complete guide to making waakye with spaghetti, plantain, hard-boiled eggs, and fried fish.",
+                image: "https://i.pinimg.com/736x/cc/0e/47/cc0e47a35eba8afe152c14a25347269c.jpg",
+                readTime: "40 min",
+                date: "March 19, 2024",
+                category: "rice",
+                difficulty: "Medium",
+                servings: "4 people"
+            },
+            {
+                id: 22,
+                title: "Kelewele: Spicy Fried Plantain Snack",
+                excerpt: "Crispy fried plantain with ginger, pepper, and spices. Perfect evening snack or side dish.",
+                image: "https://tse4.mm.bing.net/th/id/OIP.P5guZMP-neL5GhNHj54pGgAAAA?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+                readTime: "20 min",
+                date: "March 19, 2024",
+                category: "street",
+                difficulty: "Easy",
+                servings: "2-3 people"
+            }
+        ];
+
+        // More articles for "Load More" button
+        const moreGhanaianFoodArticles = [
+            {
+                id: 23,
+                title: "Red Red: Ghanaian Bean Stew with Fried Plantain",
+                excerpt: "Traditional black-eyed peas stew served with fried ripe plantain - a protein-packed meal.",
+                image: "https://i.pinimg.com/originals/2c/92/76/2c92766fc084fc49f41b5acf93e4587d.jpg",
+                readTime: "30 min",
+                date: "March 20, 2024",
+                category: "stew",
+                difficulty: "Medium",
+                servings: "4 people"
+            },
+            
+            {
+                id: 24,
+                title: "Kenkey with Fried Fish and Hot Pepper",
+                excerpt: "Fermented corn dough served with fried fish and spicy pepper sauce - coastal Ghana favorite.",
+                image: "https://i.pinimg.com/originals/25/0e/a0/250ea04dc8ba1a6824ab2bc8ff66dafb.jpg",
+                readTime: "50 min",
+                date: "March 20, 2024",
+                category: "banku",
+                difficulty: "Hard",
+                servings: "4 people"
+            },
+            {
+                id: 25,
+                title: "Tuo Zaafi with Ayoyo Soup",
+                excerpt: "Northern Ghana's staple food - millet/corn dough served with green leafy soup.",
+                image: "https://media-gadventures.global.ssl.fastly.net/media-server/dynamic/blogs/posts/G-Adventures/2025/04/blog-ghana-food-tuo-zaafi.webp",
+                readTime: "55 min",
+                date: "March 20, 2024",
+                category: "stew",
+                difficulty: "Hard",
+                servings: "4-6 people"
+            },
+            {
+                id: 26,
+                title: "Shito: Ghana's Black Pepper Sauce",
+                excerpt: "Make your own shito at home - the spicy condiment that goes with almost every Ghanaian dish.",
+                image: "https://i.pinimg.com/originals/f7/e1/e2/f7e1e2ee167501e759b7335d96e9a401.jpg",
+                readTime: "35 min",
+                date: "March 20, 2024",
+                category: "snacks",
+                difficulty: "Medium",
+                servings: "Makes 2 cups"
+            }
+        ];
+
+        // Currently displayed articles
+        let displayedArticles = allGhanaianFoodArticles.slice(0, 6);
+        let allArticlesLoaded = false;
+
+        // Function to display articles - FIXED VERSION
+        function displayArticles(articlesToDisplay) {
+            foodContainer.innerHTML = '';
+            
+            if (articlesToDisplay.length === 0) {
+                foodContainer.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 50px; color: #718096;">
+                        <i class="fas fa-utensils fa-3x" style="margin-bottom: 20px; color: #e53e3e;"></i>
+                        <h3>No Recipes Found</h3>
+                        <p>Check back soon for more Ghanaian recipes!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            articlesToDisplay.forEach(article => {
+                const articleHTML = `
+                    <article class="article-card article-food" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                        <div style="position: relative; width: 100%; height: 200px; overflow: hidden;">
+                            <img src="${article.image}" 
+                                 alt="${article.title}"
+                                 style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+                                 loading="lazy"
+                                 onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                            <span style="position: absolute; top: 10px; left: 10px; background: rgba(229, 62, 62, 0.9); color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; backdrop-filter: blur(2px);">
+                                ${article.difficulty}
+                            </span>
+                        </div>
+                        <div style="padding: 20px;">
+                            <span style="display: inline-flex; align-items: center; gap: 5px; background: #e53e3e; color: white; padding: 5px 12px; border-radius: 15px; font-size: 12px; font-weight: bold; margin-bottom: 15px;">
+                                <i class="fas fa-utensils"></i> Ghanaian Food
+                            </span>
+                            <h3 style="font-size: 18px; margin-bottom: 10px; color: #2d3748; line-height: 1.4;">${article.title}</h3>
+                            <p style="color: #718096; margin-bottom: 15px; font-size: 14px; line-height: 1.6;">${article.excerpt}</p>
+                            <div style="display: flex; justify-content: space-between; margin-top: 15px; font-size: 12px; color: #718096;">
+                                <span><i class="far fa-clock"></i> ${article.readTime}</span>
+                                <span><i class="fas fa-user-friends"></i> ${article.servings}</span>
+                                <span><i class="far fa-calendar"></i> ${article.date}</span>
+                            </div>
+                            <a href="article.html?id=${article.id}" style="display: inline-flex; align-items: center; gap: 8px; color: #3182ce; text-decoration: none; font-weight: bold; font-size: 14px; margin-top: 10px;">
+                                View Recipe <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                `;
+                
+                foodContainer.innerHTML += articleHTML;
+            });
+            
+            // Add hover effect using JavaScript
+            const cards = foodContainer.querySelectorAll('.article-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
                 });
             });
+        }
 
-            // Display food articles
-            const foodContainer = document.getElementById('food-articles');
-            const sampleFoodArticles = [
-                {
-                    title: "5-Minute Breakfast Recipes",
-                    excerpt: "Quick and healthy breakfast ideas for busy mornings.",
-                    image: "https://images.unsplash.com/photo-1484723091739-30a097e8f929",
-                    readTime: "5 min",
-                    category: "breakfast"
-                },
-                {
-                    title: "Easy Pasta Recipes",
-                    excerpt: "Simple pasta dishes anyone can make in under 20 minutes.",
-                    image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8",
-                    readTime: "15 min",
-                    category: "dinner"
-                },
-                {
-                    title: "Healthy Smoothie Recipes",
-                    excerpt: "Nutritious smoothies for energy and weight loss.",
-                    image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625",
-                    readTime: "3 min",
-                    category: "breakfast"
+        // Initial display
+        displayArticles(displayedArticles);
+
+        // Load More functionality
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                loadMoreBtn.style.display = 'none';
+                loadingDiv.style.display = 'block';
+                
+                setTimeout(() => {
+                    // Add more articles
+                    displayedArticles = [...displayedArticles, ...moreGhanaianFoodArticles];
+                    displayArticles(displayedArticles);
+                    
+                    loadingDiv.style.display = 'none';
+                    loadMoreBtn.textContent = 'All Recipes Loaded';
+                    loadMoreBtn.disabled = true;
+                    allArticlesLoaded = true;
+                }, 1500);
+            });
+        }
+
+        // Filter functionality for Ghanaian food
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                // Show notification about filter
+                if (filter !== 'all') {
+                    const notification = document.createElement('div');
+                    notification.style.cssText = `
+                        background: #e53e3e;
+                        color: white;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+                        margin: 15px 0;
+                        text-align: center;
+                        font-weight: bold;
+                        animation: fadeIn 0.5s;
+                    `;
+                    
+                    // Map filter to display names
+                    const filterNames = {
+                        'stew': 'Stews & Soups',
+                        'rice': 'Rice Dishes',
+                        'banku': 'Banku & Fufu',
+                        'street': 'Street Food',
+                        'breakfast': 'Breakfast',
+                        'snacks': 'Snacks'
+                    };
+                    
+                    notification.innerHTML = `Showing ${filterNames[filter] || filter} recipes`;
+                    foodContainer.parentNode.insertBefore(notification, foodContainer);
+                    
+                    // Get articles to show based on filter
+                    let articlesToShow = [];
+                    if (allArticlesLoaded) {
+                        articlesToShow = displayedArticles.filter(article => article.category === filter);
+                    } else {
+                        articlesToShow = allGhanaianFoodArticles.filter(article => article.category === filter);
+                    }
+                    
+                    // Update display
+                    displayArticles(articlesToShow);
+                    
+                    // Remove notification after 3 seconds
+                    setTimeout(() => {
+                        notification.style.opacity = '0';
+                        notification.style.transition = 'opacity 0.5s';
+                        setTimeout(() => notification.remove(), 500);
+                    }, 3000);
+                } else {
+                    // Show all articles
+                    if (allArticlesLoaded) {
+                        displayArticles(displayedArticles);
+                    } else {
+                        displayArticles(allGhanaianFoodArticles);
+                    }
                 }
-            ];
-
-            // In a real site, this would fetch from your articles data
-            // For now, show a message
-            foodContainer.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
-                    <h3>Your Food Articles Will Appear Here</h3>
-                    <p style="color: #718096; margin-top: 15px;">
-                        Add food articles in your <strong>script.js</strong> file under the "articles" array.
-                        Set <code>category: "food"</code> for each food article.
-                    </p>
-                    <p style="margin-top: 20px;">
-                        <a href="index.html" style="color: #3182ce; text-decoration: underline;">
-                            ← Back to Home to see example articles
-                        </a>
-                    </p>
-                </div>
-            `;
+            });
         });
-    </script>
-</body>
-</html>
+
+        // Newsletter subscription
+        const subscribeBtn = document.getElementById('food-subscribe-btn');
+        const emailInput = document.getElementById('food-email');
+        
+        if (subscribeBtn && emailInput) {
+            subscribeBtn.addEventListener('click', function() {
+                const email = emailInput.value.trim();
+                
+                if (!email || !email.includes('@')) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+                
+                // Show loading
+                const originalText = subscribeBtn.innerHTML;
+                subscribeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+                subscribeBtn.disabled = true;
+                
+                // Simulate subscription
+                setTimeout(() => {
+                    alert(`🇬🇭 Medaase! Thank you for subscribing to Ghanaian Recipes!\n\nYou'll receive weekly authentic Ghanaian recipes and cooking tips.`);
+                    emailInput.value = '';
+                    subscribeBtn.innerHTML = originalText;
+                    subscribeBtn.disabled = false;
+                    
+                    // Save to localStorage
+                    let subscribers = JSON.parse(localStorage.getItem('ghanaFoodSubscribers') || '[]');
+                    subscribers.push({
+                        email: email,
+                        date: new Date().toISOString(),
+                        country: 'Ghana'
+                    });
+                    localStorage.setItem('ghanaFoodSubscribers', JSON.stringify(subscribers));
+                }, 1500);
+            });
+            
+            // Enter key support
+            emailInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    subscribeBtn.click();
+                }
+            });
+        }
+    });
+
+    // Add CSS animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .article-card {
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .load-more-btn {
+            background: #e53e3e;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .load-more-btn:hover {
+            background: #c53030;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(197, 48, 48, 0.3);
+        }
+        
+        .load-more-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        #loading-food {
+            color: #e53e3e;
+            font-size: 14px;
+        }
+        
+        #loading-food i {
+            margin-right: 10px;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Filter button styles */
+        .filter-btn.active {
+            background: #e53e3e;
+            color: white;
+            border-color: #e53e3e;
+        }
+        
+        .filter-btn:not(.active):hover {
+            background: #edf2f7;
+            border-color: #cbd5e0;
+        }
+    `;
+    document.head.appendChild(style);
+</script>

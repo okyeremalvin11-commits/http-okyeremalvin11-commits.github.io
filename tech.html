@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technology Tutorials - Digital Life Hub</title>
+    <title>Tech Tutorials - Digital Life Hub</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     
     <style>
         .category-hero {
-            background: linear-gradient(rgba(49, 130, 206, 0.9), rgba(49, 130, 206, 0.7)), 
-                        url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(66, 153, 225, 0.9), rgba(66, 153, 225, 0.7)), 
+                        url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -35,40 +36,40 @@
             border-radius: 10px;
             backdrop-filter: blur(5px);
         }
-        .tech-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
         }
-        .tech-category {
-            background: #ebf8ff;
-            padding: 25px;
-            border-radius: 10px;
-            text-align: center;
-            border-left: 5px solid #3182ce;
-            transition: transform 0.3s;
+        .filter-btn {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #4a5568;
+            transition: all 0.3s;
         }
-        .tech-category:hover {
-            transform: translateY(-5px);
-        }
-        .tech-category i {
-            font-size: 32px;
-            color: #3182ce;
-            margin-bottom: 15px;
+        .filter-btn:hover, .filter-btn.active {
+            background: #4299e1;
+            color: white;
+            border-color: #4299e1;
         }
         .back-home {
             display: inline-block;
             margin: 30px 0;
             padding: 12px 25px;
-            background: #3182ce;
+            background: #4299e1;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
         }
         .back-home:hover {
-            background: #2c5282;
+            background: #3182ce;
         }
     </style>
 </head>
@@ -83,9 +84,9 @@
             <nav>
                 <ul>
                     <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="food.html"><i class="fas fa-utensils"></i> Food</a></li>
-                    <li><a href="tech.html" class="nav-tech"><i class="fas fa-laptop-code"></i> Tech</a></li>
-                    <li><a href="gaming.html"><i class="fas fa-gamepad"></i> Gaming</a></li>
+                    <li><a href="food.html" class="nav-food"><i class="fas fa-utensils"></i> Food</a></li>
+                    <li><a href="tech.html" class="nav-tech active"><i class="fas fa-laptop-code"></i> Tech</a></li>
+                    <li><a href="gaming.html" class="nav-gaming"><i class="fas fa-gamepad"></i> Gaming</a></li>
                     <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
                     <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
                 </ul>
@@ -96,8 +97,8 @@
     <!-- Tech Hero Section -->
     <section class="category-hero">
         <div class="container">
-            <h1 class="category-title"><i class="fas fa-laptop-code"></i> Technology Tutorials</h1>
-            <p style="font-size: 20px; max-width: 800px; margin: 0 auto;">Learn coding, software, hardware, and digital skills!</p>
+            <h1 class="category-title"><i class="fas fa-laptop-code"></i> Tech Tutorials</h1>
+            <p style="font-size: 20px; max-width: 800px; margin: 0 auto;">Learn programming, web development, AI tools, and master new technologies!</p>
             
             <div class="category-stats">
                 <div class="stat-box">
@@ -105,86 +106,60 @@
                     <div>Tutorials</div>
                 </div>
                 <div class="stat-box">
-                    <div style="font-size: 24px; font-weight: bold;">10+</div>
-                    <div>Tech Stacks</div>
+                    <div style="font-size: 24px; font-weight: bold;">15+</div>
+                    <div>Technologies</div>
                 </div>
                 <div class="stat-box">
-                    <div style="font-size: 24px; font-weight: bold;">Free</div>
-                    <div>All Content</div>
+                    <div style="font-size: 24px; font-weight: bold;">Beginner</div>
+                    <div>To Advanced</div>
                 </div>
             </div>
         </div>
     </section>
 
     <div class="container">
-        <!-- Tech Categories -->
-        <h2 style="margin: 40px 0 25px 0; color: #2d3748;">Learn These Skills</h2>
-        
-        <div class="tech-categories">
-            <div class="tech-category">
-                <i class="fab fa-html5"></i>
-                <h3>Web Development</h3>
-                <p>HTML, CSS, JavaScript tutorials</p>
-            </div>
-            <div class="tech-category">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>Mobile Apps</h3>
-                <p>Android & iOS development</p>
-            </div>
-            <div class="tech-category">
-                <i class="fas fa-database"></i>
-                <h3>Databases</h3>
-                <p>SQL, MongoDB, Firebase</p>
-            </div>
-            <div class="tech-category">
-                <i class="fas fa-robot"></i>
-                <h3>AI & Machine Learning</h3>
-                <p>Python, TensorFlow, AI tools</p>
-            </div>
-            <div class="tech-category">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Cybersecurity</h3>
-                <p>Online safety & protection</p>
-            </div>
-            <div class="tech-category">
-                <i class="fas fa-tools"></i>
-                <h3>Tools & Software</h3>
-                <p>Productivity & development tools</p>
-            </div>
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Tutorials</button>
+            <button class="filter-btn" data-filter="web">Web Dev</button>
+            <button class="filter-btn" data-filter="python">Python</button>
+            <button class="filter-btn" data-filter="ai">AI Tools</button>
+            <button class="filter-btn" data-filter="mobile">Mobile</button>
+            <button class="filter-btn" data-filter="security">Security</button>
         </div>
 
-        <!-- Tech Articles -->
+        <!-- Featured Tech Articles -->
         <h2 style="margin: 40px 0 25px 0; color: #2d3748;">Latest Tech Tutorials</h2>
         
         <div class="articles-grid" id="tech-articles">
             <!-- Tech articles will be loaded by JavaScript -->
-            <div style="grid-column: 1 / -1; text-align: center; padding: 50px; color: #718096;">
-                <i class="fas fa-laptop-code fa-3x" style="margin-bottom: 20px; color: #3182ce;"></i>
+            <div style="text-align: center; padding: 50px; color: #718096;">
+                <i class="fas fa-laptop-code fa-3x" style="margin-bottom: 20px; color: #4299e1;"></i>
                 <h3>Loading tech tutorials...</h3>
-                <p>Technology articles will appear here automatically when you add them.</p>
-                <p style="margin-top: 20px; font-size: 14px;">
-                    Add tech articles in your <code>script.js</code> file with <code>category: "tech"</code>
-                </p>
+                <p>Tech articles will appear here automatically when you add them.</p>
             </div>
         </div>
 
-        <!-- Beginner's Guide -->
-        <div style="background: #ebf8ff; padding: 30px; border-radius: 15px; margin: 40px 0;">
-            <h3 style="color: #2d3748;"><i class="fas fa-graduation-cap"></i> Beginner's Guide to Tech</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
-                <div style="background: white; padding: 20px; border-radius: 10px;">
-                    <h4>1. Choose a Language</h4>
-                    <p>Start with HTML/CSS for web, Python for AI, or JavaScript for apps.</p>
-                </div>
-                <div style="background: white; padding: 20px; border-radius: 10px;">
-                    <h4>2. Build Projects</h4>
-                    <p>Create simple projects to apply what you learn.</p>
-                </div>
-                <div style="background: white; padding: 20px; border-radius: 10px;">
-                    <h4>3. Join Communities</h4>
-                    <p>Connect with other learners online.</p>
-                </div>
+        <!-- Newsletter Section -->
+        <div style="background: #ebf8ff; padding: 30px; border-radius: 15px; margin: 40px 0; text-align: center;">
+            <h3><i class="fas fa-envelope"></i> Get Weekly Tech Tips</h3>
+            <p style="margin: 15px 0;">Subscribe to receive new tech tutorials and AI tool updates every week!</p>
+            <div style="max-width: 400px; margin: 20px auto;">
+                <input type="email" placeholder="Your email" style="width: 70%; padding: 12px; border: 2px solid #cbd5e0; border-radius: 5px;">
+                <button style="background: #4299e1; color: white; border: none; padding: 12px 25px; border-radius: 5px; margin-left: 10px; font-weight: bold; cursor: pointer;">
+                    Subscribe
+                </button>
             </div>
+        </div>
+
+        <!-- Popular Topics -->
+        <h2 style="margin: 40px 0 25px 0; color: #2d3748;">Popular Tech Topics</h2>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 40px;">
+            <span style="background: #ebf8ff; color: #2c5282; padding: 10px 20px; border-radius: 20px; font-weight: bold;">Web Development</span>
+            <span style="background: #ebf8ff; color: #2c5282; padding: 10px 20px; border-radius: 20px; font-weight: bold;">Python Programming</span>
+            <span style="background: #ebf8ff; color: #2c5282; padding: 10px 20px; border-radius: 20px; font-weight: bold;">AI Tools</span>
+            <span style="background: #ebf8ff; color: #2c5282; padding: 10px 20px; border-radius: 20px; font-weight: bold;">Cybersecurity</span>
+            <span style="background: #ebf8ff; color: #2c5282; padding: 10px 20px; border-radius: 20px; font-weight: bold;">Mobile Apps</span>
         </div>
 
         <a href="index.html" class="back-home">
@@ -202,12 +177,12 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Tech Resources</h3>
+                    <h3>Tech Categories</h3>
                     <ul>
-                        <li><a href="#"><i class="fas fa-code"></i> Free Code Templates</a></li>
-                        <li><a href="#"><i class="fas fa-tools"></i> Development Tools</a></li>
-                        <li><a href="#"><i class="fas fa-book"></i> Learning Paths</a></li>
-                        <li><a href="#"><i class="fas fa-question-circle"></i> Tech Support</a></li>
+                        <li><a href="tech.html?filter=web"><i class="fas fa-code"></i> Web Development</a></li>
+                        <li><a href="tech.html?filter=python"><i class="fab fa-python"></i> Python</a></li>
+                        <li><a href="tech.html?filter=ai"><i class="fas fa-robot"></i> AI Tools</a></li>
+                        <li><a href="tech.html?filter=security"><i class="fas fa-shield-alt"></i> Security</a></li>
                     </ul>
                 </div>
             </div>
@@ -220,10 +195,183 @@
     </footer>
 
     <script>
+        // Load and display REAL tech articles
         document.addEventListener('DOMContentLoaded', function() {
-            // Tech articles will be loaded here
-            // For now, show instructional message
+            const techContainer = document.getElementById('tech-articles');
+            
+            // Tech articles data - Using same image pattern as index.html
+            const techArticles = [
+                {
+                    id: 2,
+                    title: "Build Your First Website with HTML & CSS",
+                    excerpt: "A beginner-friendly guide to creating your portfolio website from scratch.",
+                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    readTime: "15 min",
+                    date: "2024-03-14",
+                    category: "tech"
+                },
+                {
+                    id: 5,
+                    title: "How I Automated My Work with Python Scripts",
+                    excerpt: "Save 10 hours per week by automating repetitive tasks with simple Python code.",
+                    image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    readTime: "12 min",
+                    date: "2024-03-11",
+                    category: "tech"
+                },
+                {
+                    id: 11,
+                    title: "Free AI Tools Every Ghanaian Student Should Use",
+                    excerpt: "After testing 50+ AI tools, these 7 are most useful for Ghanaian students.",
+                    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    readTime: "8 min",
+                    date: "2024-03-17",
+                    category: "tech"
+                },
+                {
+                    id: 12,
+                    title: "How to Build a Weather App Using JavaScript",
+                    excerpt: "Step-by-step tutorial to create a weather app that works in Ghana.",
+                    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    readTime: "20 min",
+                    date: "2024-03-17",
+                    category: "tech"
+                },
+                {
+                    id: 13,
+                    title: "My Journey Learning Python in 30 Days",
+                    excerpt: "As a complete beginner, here's how I learned Python programming in one month.",
+                    image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    readTime: "7 min",
+                    date: "2024-03-17",
+                    category: "tech"
+                },
+                {
+                    id: 14,
+                    title: "Essential Cybersecurity Tips for Ghanaian Internet Users",
+                    excerpt: "Protect yourself from online scams with these simple security practices.",
+                    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    readTime: "6 min",
+                    date: "2024-03-17",
+                    category: "tech"
+                }
+            ];
+
+            // Clear loading message
+            techContainer.innerHTML = '';
+            
+            // Display each tech article
+            techArticles.forEach(article => {
+                const articleHTML = `
+                    <article class="article-card article-tech">
+                        <div class="article-image" style="background-image: url('${article.image}?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                        <div class="article-content">
+                            <span class="article-category category-tech">
+                                <i class="fas fa-laptop-code"></i> Tech
+                            </span>
+                            <h3 class="article-title">${article.title}</h3>
+                            <p class="article-excerpt">${article.excerpt}</p>
+                            <div class="article-meta" style="display: flex; justify-content: space-between; margin-top: 15px; font-size: 12px; color: var(--gray);">
+                                <span><i class="far fa-clock"></i> ${article.readTime} read</span>
+                                <span><i class="far fa-calendar"></i> ${article.date}</span>
+                            </div>
+                            <a href="article.html?id=${article.id}" class="read-more">
+                                Read Tutorial <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                `;
+                
+                techContainer.innerHTML += articleHTML;
+            });
+
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    if (filter !== 'all') {
+                        const notification = document.createElement('div');
+                        notification.style.cssText = `
+                            background: #4299e1;
+                            color: white;
+                            padding: 10px 20px;
+                            border-radius: 5px;
+                            margin: 15px 0;
+                            text-align: center;
+                            font-weight: bold;
+                            animation: fadeIn 0.5s;
+                        `;
+                        notification.innerHTML = `Showing ${filter} tutorials`;
+                        techContainer.parentNode.insertBefore(notification, techContainer);
+                        
+                        setTimeout(() => {
+                            notification.style.opacity = '0';
+                            notification.style.transition = 'opacity 0.5s';
+                            setTimeout(() => notification.remove(), 500);
+                        }, 3000);
+                    }
+                });
+            });
+
+            // Newsletter subscription
+            const subscribeBtn = document.querySelector('button[style*="background: #4299e1"]');
+            const emailInput = document.querySelector('input[type="email"]');
+            
+            if (subscribeBtn && emailInput) {
+                subscribeBtn.addEventListener('click', function() {
+                    const email = emailInput.value.trim();
+                    
+                    if (!email || !email.includes('@')) {
+                        alert('Please enter a valid email address');
+                        return;
+                    }
+                    
+                    const originalText = subscribeBtn.innerHTML;
+                    subscribeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+                    subscribeBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        alert(`🎉 Thank you for subscribing to Tech Tutorials!\n\nYou'll receive weekly programming tutorials and AI tool updates.`);
+                        emailInput.value = '';
+                        subscribeBtn.innerHTML = originalText;
+                        subscribeBtn.disabled = false;
+                        
+                        let subscribers = JSON.parse(localStorage.getItem('techSubscribers') || '[]');
+                        subscribers.push({
+                            email: email,
+                            date: new Date().toISOString(),
+                            category: 'tech'
+                        });
+                        localStorage.setItem('techSubscribers', JSON.stringify(subscribers));
+                    }, 1500);
+                });
+                
+                emailInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        subscribeBtn.click();
+                    }
+                });
+            }
         });
+
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .article-card {
+                animation: fadeIn 0.5s ease;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>

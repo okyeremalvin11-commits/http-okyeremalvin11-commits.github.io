@@ -4,9 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loading Article - Digital Life Hub</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* All the CSS styles remain the same as your working version */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f7fafc;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #3182ce;
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            background: #edf2f7;
+            color: #3182ce;
+        }
+        
+        nav a i {
+            margin-right: 5px;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 15px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #4a5568;
+            color: #a0aec0;
+            font-size: 14px;
+        }
+        
+        /* Article Page Styles */
         .article-page {
             max-width: 800px;
             margin: 40px auto;
@@ -25,6 +130,9 @@
             color: white;
             font-weight: bold;
             margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .article-title {
@@ -43,12 +151,19 @@
             flex-wrap: wrap;
         }
         
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
         .article-image {
             width: 100%;
             height: 400px;
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         
         .article-content {
@@ -65,6 +180,11 @@
             padding-bottom: 10px;
         }
         
+        .article-content h3 {
+            margin: 30px 0 15px 0;
+            color: #4a5568;
+        }
+        
         .article-content p {
             margin-bottom: 20px;
         }
@@ -78,8 +198,18 @@
             margin-bottom: 10px;
         }
         
+        .article-content code {
+            background: #f7fafc;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+        }
+        
         .back-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             margin-top: 40px;
             padding: 12px 25px;
             background: #3182ce;
@@ -88,11 +218,15 @@
             border-radius: 5px;
             font-weight: bold;
             transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
         
         .back-button:hover {
             background: #2c5282;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
         }
         
         .loading {
@@ -123,7 +257,22 @@
             gap: 10px;
         }
         
+        /* Responsive Design */
         @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                justify-content: center;
+            }
+            
+            nav a {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+            
             .article-title {
                 font-size: 28px;
             }
@@ -138,6 +287,26 @@
             
             .article-meta {
                 font-size: 14px;
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                gap: 10px;
+            }
+            
+            .article-title {
+                font-size: 24px;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .article-page {
+                padding: 0 10px;
             }
         }
     </style>
@@ -196,6 +365,22 @@
                         Free content supported by ethical advertising.
                     </p>
                 </div>
+                <div class="footer-column">
+                    <h3><i class="fas fa-link"></i> Quick Links</h3>
+                    <ul style="list-style: none; color: #a0aec0; margin-top: 10px;">
+                        <li style="margin-bottom: 8px;"><a href="index.html" style="color: #a0aec0; text-decoration: none;">Home</a></li>
+                        <li style="margin-bottom: 8px;"><a href="food.html" style="color: #a0aec0; text-decoration: none;">Food</a></li>
+                        <li style="margin-bottom: 8px;"><a href="tech.html" style="color: #a0aec0; text-decoration: none;">Tech</a></li>
+                        <li style="margin-bottom: 8px;"><a href="gaming.html" style="color: #a0aec0; text-decoration: none;">Gaming</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3><i class="fas fa-envelope"></i> Contact</h3>
+                    <p style="color: #a0aec0; margin-top: 10px;">
+                        Email: contact@digitallifehub.com<br>
+                        Follow us on social media
+                    </p>
+                </div>
             </div>
             
             <div class="copyright">
@@ -211,7 +396,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const articleId = parseInt(urlParams.get('id'));
         
-        // Article database - ACTUAL CONTENT for ALL 16 articles
+        // COMPLETE Article database - ALL 22 articles
         const articleDatabase = {
             // ====== ARTICLE 1 ======
             1: {
@@ -539,12 +724,12 @@
                 `
             },
             
-            // ====== ARTICLE 7 (You already have this) ======
+            // ====== ARTICLE 7 ======
             7: {
                 title: "Koko and Koose: The Ultimate Ghanaian Breakfast Combo",
                 category: "food",
                 excerpt: "Learn how to make authentic Hausa koko (spicy millet porridge) paired with perfectly fried koose (bean cakes).",
-                image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "12 min",
                 date: "March 17, 2024",
                 content: `
@@ -558,7 +743,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543" alt="Traditional Ghanaian Breakfast" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Traditional Ghanaian Breakfast" class="article-image">
                     
                     <div class="article-content">
                         <h2>Why This Combo is Perfect for Ghanaian Mornings</h2>
@@ -621,12 +806,12 @@
                 `
             },
             
-            // ====== ARTICLE 8 (You already have this) ======
+            // ====== ARTICLE 8 ======
             8: {
                 title: "MTN vs Vodafone: Which Has Better Night Data Bundles in 2024?",
                 category: "tech",
                 excerpt: "I tested both networks for 30 days. Here's which provider gives you more nighttime data for your money.",
-                image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3",
+                image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "7 min",
                 date: "March 17, 2024",
                 content: `
@@ -731,12 +916,12 @@
                 `
             },
             
-            // ====== ARTICLE 9 (You already have this) ======
+            // ====== ARTICLE 9 ======
             9: {
                 title: "How to Win Local FIFA Tournaments in Ghana Gaming Cafés",
                 category: "gaming",
                 excerpt: "After winning 3 local tournaments, I'm sharing the strategies that work against Ghanaian FIFA players.",
-                image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8",
+                image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "9 min",
                 date: "March 17, 2024",
                 content: `
@@ -857,7 +1042,7 @@
                 title: "How to Enjoy Street Food Safely in Accra",
                 category: "food",
                 excerpt: "After getting food poisoning twice, I learned these essential tips for identifying clean street food vendors in Ghana.",
-                image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "6 min",
                 date: "March 16, 2024",
                 content: `
@@ -871,7 +1056,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Street Food" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Street Food" class="article-image">
                     
                     <div class="article-content">
                         <h2>My Food Poisoning Lessons</h2>
@@ -900,7 +1085,7 @@
                 title: "Best Smartphones Under GH₵2,000 in Ghana (2024)",
                 category: "tech",
                 excerpt: "After testing 8 different phones available in Ghana, here are my top picks for budget smartphones that actually perform well.",
-                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "9 min",
                 date: "March 16, 2024",
                 content: `
@@ -943,7 +1128,7 @@
                 title: "How to Save 50% on Mobile Data in Ghana",
                 category: "tech",
                 excerpt: "Living with expensive data plans taught me these 10 practical tips to reduce your monthly data consumption significantly.",
-                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31",
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "7 min",
                 date: "March 16, 2024",
                 content: `
@@ -986,7 +1171,7 @@
                 title: "How I Landed My First Tech Job in Ghana Without a Degree",
                 category: "tech",
                 excerpt: "My journey from knowing nothing about coding to getting hired as a web developer in Accra - and how you can do it too.",
-                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0",
+                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "11 min",
                 date: "March 16, 2024",
                 content: `
@@ -1029,7 +1214,7 @@
                 title: "5 Mobile Games That Actually Pay Real Money in Ghana",
                 category: "gaming",
                 excerpt: "After testing dozens of 'earn money' games, these are the legitimate ones that actually let you cash out to Mobile Money.",
-                image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd",
+                image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "8 min",
                 date: "March 16, 2024",
                 content: `
@@ -1072,7 +1257,7 @@
                 title: "Gaming Setup Under GH₵500 for Students in Ghana",
                 category: "gaming",
                 excerpt: "You don't need an expensive PC to enjoy gaming. Here's my budget setup using affordable Android devices and free games.",
-                image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575",
+                image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "6 min",
                 date: "March 16, 2024",
                 content: `
@@ -1121,7 +1306,7 @@
                 title: "Best Games to Play with Friends at University in Ghana",
                 category: "gaming",
                 excerpt: "These are the games my friends and I actually play together on campus - perfect for group gaming sessions.",
-                image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f",
+                image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "5 min",
                 date: "March 16, 2024",
                 content: `
@@ -1154,6 +1339,338 @@
                         <div class="tip-box">
                             <h3><i class="fas fa-users"></i> Hosting Tips</h3>
                             <p>Use someone's mobile hotspot if hall Wi-Fi is slow. Take turns hosting to share data costs.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 17 ======
+            17: {
+                title: "Authentic Ghanaian Jollof Rice Recipe",
+                category: "food",
+                excerpt: "The secret to perfect Ghanaian jollof rice that wins every party. Smoked turkey makes all the difference!",
+                image: "https://images.unsplash.com/photo-1608034310701-2f6a1d5a5d0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                readTime: "25 min",
+                date: "March 18, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #e53e3e;">Food</span>
+                        <h1 class="article-title">Authentic Ghanaian Jollof Rice Recipe</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 25 min read</span>
+                            <span><i class="far fa-calendar"></i> March 18, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1608034310701-2f6a1d5a5d0a" alt="Ghanaian Jollof Rice" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>The Ghana vs Nigeria Jollof Debate</h2>
+                        <p>After years of experimenting and countless family gatherings, I've perfected the Ghanaian jollof recipe that always wins the party. The secret? Smoked turkey and proper rice-to-liquid ratio.</p>
+                        
+                        <h2>Ingredients for 6-8 People</h2>
+                        <p><strong>For the Base:</strong></p>
+                        <ul>
+                            <li>4 cups long-grain parboiled rice</li>
+                            <li>1 large onion, blended</li>
+                            <li>4 medium tomatoes, blended</li>
+                            <li>2 red bell peppers, blended</li>
+                            <li>2 scotch bonnet peppers (adjust to taste)</li>
+                            <li>½ cup vegetable oil</li>
+                            <li>500g smoked turkey (or chicken)</li>
+                            <li>3 cups chicken or turkey stock</li>
+                        </ul>
+                        
+                        <p><strong>Spices (The Magic Mix):</strong></p>
+                        <ul>
+                            <li>2 teaspoons thyme</li>
+                            <li>2 teaspoons curry powder</li>
+                            <li>1 teaspoon ginger powder</li>
+                            <li>1 teaspoon garlic powder</li>
+                            <li>2 bay leaves</li>
+                            <li>Salt to taste</li>
+                            <li>2 maggi cubes</li>
+                        </ul>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-fire"></i> Pro Tip: The Smoked Meat Advantage</h3>
+                            <p>Smoked turkey or chicken adds a deep, smoky flavor that's essential for authentic Ghanaian jollof. Don't substitute with fresh meat.</p>
+                        </div>
+                        
+                        <h2>Step-by-Step Cooking Method</h2>
+                        
+                        <h3>Step 1: Prepare the Base Sauce</h3>
+                        <ol>
+                            <li>Heat oil in large pot over medium heat</li>
+                            <li>Add blended onions and fry until translucent (3-4 minutes)</li>
+                            <li>Add tomato-pepper blend and cook for 15-20 minutes until oil separates</li>
+                            <li>This is crucial: cook until the sauce thickens and darkens slightly</li>
+                        </ol>
+                        
+                        <h3>Step 2: Add Protein and Spices</h3>
+                        <ol>
+                            <li>Add smoked turkey to the sauce, stir well</li>
+                            <li>Add all spices (thyme, curry, ginger, garlic, bay leaves)</li>
+                            <li>Cook for another 10 minutes to infuse flavors</li>
+                            <li>Add maggi cubes and salt to taste</li>
+                        </ol>
+                        
+                        <h3>Step 3: The Rice Magic</h3>
+                        <ol>
+                            <li>Wash rice thoroughly until water runs clear (removes excess starch)</li>
+                            <li>Add rice to the pot, stir gently to coat with sauce</li>
+                            <li>Add hot stock (ratio: 1 cup rice to 1.5 cups liquid)</li>
+                            <li>Bring to boil, then reduce to lowest heat</li>
+                            <li>Cover with foil THEN lid (traps steam)</li>
+                            <li>Cook for 25-30 minutes without opening</li>
+                        </ol>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 18 ======
+            18: {
+                title: "Banku with Grilled Tilapia and Shito",
+                category: "food",
+                excerpt: "Step-by-step guide to making soft banku paired with perfectly grilled tilapia and homemade shito.",
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                readTime: "45 min",
+                date: "March 18, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #e53e3e;">Food</span>
+                        <h1 class="article-title">Banku with Grilled Tilapia and Shito</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 45 min read</span>
+                            <span><i class="far fa-calendar"></i> March 18, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Banku and Tilapia" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>The Coastal Ghana Experience</h2>
+                        <p>This meal transports you to Ghana's coastline. Perfect banku should be smooth, slightly sour, and elastic. The tilapia should be crispy outside, moist inside. And the shito? Spicy, complex, unforgettable.</p>
+                        
+                        <h2>Part 1: Perfect Banku</h2>
+                        <p><strong>Ingredients:</strong></p>
+                        <ul>
+                            <li>2 cups corn dough</li>
+                            <li>1 cup cassava dough</li>
+                            <li>Water as needed</li>
+                            <li>Salt to taste</li>
+                        </ul>
+                        
+                        <p><strong>The Secret:</strong> Use fermented dough (leave mixed dough overnight) for authentic sour taste.</p>
+                        
+                        <h2>Part 2: Grilled Tilapia</h2>
+                        <p><strong>Marinade Magic:</strong></p>
+                        <ul>
+                            <li>Blended ginger, garlic, onion</li>
+                            <li>Maggi cube, salt, pepper</li>
+                            <li>Lemon juice</li>
+                        </ul>
+                        
+                        <h2>Part 3: Homemade Shito</h2>
+                        <p><strong>Traditional Recipe:</strong></p>
+                        <ul>
+                            <li>Dried shrimp</li>
+                            <li>Onions, ginger, garlic</li>
+                            <li>Scotch bonnet peppers</li>
+                            <li>Tomato paste, oil</li>
+                        </ul>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-fire"></i> Grilling Tip</h3>
+                            <p>Grill tilapia on medium heat for 7-8 minutes per side. Brush with marinade while grilling.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 19 ======
+            19: {
+                title: "Fufu with Goat Light Soup - Ashanti Style",
+                category: "food",
+                excerpt: "Traditional fufu preparation with goat light soup. Perfect for family gatherings and special occasions.",
+                image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                readTime: "60 min",
+                date: "March 19, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #e53e3e;">Food</span>
+                        <h1 class="article-title">Fufu with Goat Light Soup - Ashanti Style</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 60 min read</span>
+                            <span><i class="far fa-calendar"></i> March 19, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187" alt="Fufu and Soup" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>Traditional Ashanti Meal</h2>
+                        <p>This is the meal that brings families together in Ashanti region. The rhythmic pounding of fufu, the aroma of goat soup - it's more than food, it's culture.</p>
+                        
+                        <h2>Ingredients</h2>
+                        <p><strong>For the Fufu:</strong></p>
+                        <ul>
+                            <li>Cassava and plantain (3:1 ratio)</li>
+                            <li>Water for boiling</li>
+                        </ul>
+                        
+                        <p><strong>For the Soup:</strong></p>
+                        <ul>
+                            <li>Goat meat with bones</li>
+                            <li>Tomatoes, onions, ginger</li>
+                            <li>Garden eggs</li>
+                            <li>Pepper, salt, maggi</li>
+                        </ul>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-mortar-pestle"></i> Pounding Technique</h3>
+                            <p>Pound while hot, turn constantly. The perfect fufu should be smooth with no lumps.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 20 ======
+            20: {
+                title: "Waakye: Ghana's Favorite Red Rice and Beans",
+                category: "food",
+                excerpt: "Complete guide to making waakye with spaghetti, plantain, hard-boiled eggs, and fried fish.",
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                readTime: "40 min",
+                date: "March 19, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #e53e3e;">Food</span>
+                        <h1 class="article-title">Waakye: Ghana's Favorite Red Rice and Beans</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 40 min read</span>
+                            <span><i class="far fa-calendar"></i> March 19, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Waakye" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>Ghana's Complete Meal</h2>
+                        <p>Waakye is more than rice and beans - it's a complete meal with spaghetti, plantain, eggs, and protein. The distinctive red color comes from sorghum leaves.</p>
+                        
+                        <h2>Ingredients</h2>
+                        <p><strong>Main Components:</strong></p>
+                        <ul>
+                            <li>Rice and black-eyed peas</li>
+                            <li>Sorghum leaves (for color)</li>
+                            <li>Spaghetti</li>
+                            <li>Plantain</li>
+                            <li>Hard-boiled eggs</li>
+                            <li>Fried fish or meat</li>
+                        </ul>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-leaf"></i> The Red Color Secret</h3>
+                            <p>Use dried sorghum leaves (waakye leaves). Boil them with the rice and beans for natural red color.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 21 - NEW ARTICLE TO FILL THE GAP ======
+            21: {
+                title: "Red Red: Ghanaian Stewed Beans with Fried Plantain",
+                category: "food",
+                excerpt: "Learn how to make the perfect red red - a delicious combination of spicy black-eyed beans and sweet fried plantain.",
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                readTime: "30 min",
+                date: "March 19, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #e53e3e;">Food</span>
+                        <h1 class="article-title">Red Red: Ghanaian Stewed Beans with Fried Plantain</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 30 min read</span>
+                            <span><i class="far fa-calendar"></i> March 19, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Red Red Ghanaian Dish" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>Why It's Called Red Red</h2>
+                        <p>This dish gets its name from the red palm oil used and the red color of the fried plantain. It's a vegetarian-friendly meal that's both nutritious and delicious.</p>
+                        
+                        <h2>Ingredients</h2>
+                        <p><strong>For the Beans:</strong></p>
+                        <ul>
+                            <li>2 cups black-eyed peas</li>
+                            <li>1 large onion, chopped</li>
+                            <li>2 tomatoes, blended</li>
+                            <li>2 scotch bonnet peppers</li>
+                            <li>3 tablespoons red palm oil</li>
+                            <li>1 teaspoon ginger powder</li>
+                            <li>Salt to taste</li>
+                        </ul>
+                        
+                        <p><strong>For the Plantain:</strong></p>
+                        <ul>
+                            <li>2 ripe plantains</li>
+                            <li>Vegetable oil for frying</li>
+                        </ul>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-utensils"></i> Cooking Tip</h3>
+                            <p>Use red palm oil for authentic flavor and color. Don't substitute with regular vegetable oil.</p>
+                        </div>
+                    </div>
+                `
+            },
+            
+            // ====== ARTICLE 22 ======
+            22: {
+                title: "Kelewele: Spicy Fried Plantain Snack",
+                category: "food",
+                excerpt: "Crispy fried plantain with ginger, pepper, and spices. Perfect evening snack or side dish.",
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                readTime: "20 min",
+                date: "March 19, 2024",
+                content: `
+                    <div class="article-header">
+                        <span class="article-category" style="background: #e53e3e;">Food</span>
+                        <h1 class="article-title">Kelewele: Spicy Fried Plantain Snack</h1>
+                        <div class="article-meta">
+                            <span><i class="far fa-clock"></i> 20 min read</span>
+                            <span><i class="far fa-calendar"></i> March 19, 2024</span>
+                            <span><i class="fas fa-eye"></i> <span id="view-count">0</span> views</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Kelewele" class="article-image">
+                    
+                    <div class="article-content">
+                        <h2>Ghana's Favorite Street Food</h2>
+                        <p>Kelewele is the snack that fills Ghanaian evenings with aroma. Crispy outside, soft inside, with a spicy ginger kick.</p>
+                        
+                        <h2>Ingredients</h2>
+                        <ul>
+                            <li>Ripe plantains (black spots on skin)</li>
+                            <li>Fresh ginger, blended</li>
+                            <li>Garlic, onion powder</li>
+                            <li>Anise seeds (optional)</li>
+                            <li>Salt and pepper</li>
+                            <li>Oil for deep frying</li>
+                        </ul>
+                        
+                        <div class="tip-box">
+                            <h3><i class="fas fa-thermometer-half"></i> Frying Tip</h3>
+                            <p>Fry at medium-high heat (350°F/175°C) for perfect crispiness without burning the spices.</p>
                         </div>
                     </div>
                 `
