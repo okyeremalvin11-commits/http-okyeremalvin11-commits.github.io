@@ -400,18 +400,28 @@ function initializeMobileMenu() {
     const nav = document.querySelector('nav');
     
     if (mobileMenuBtn && nav) {
-        console.log('Mobile menu elements found');
+        console.log('Mobile menu elements found:', mobileMenuBtn, nav);
         
         // Toggle menu when button is clicked
-        mobileMenuBtn.addEventListener('click', function() {
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            
+            console.log('Menu button clicked');
+            
+            // Toggle the active class on nav
             nav.classList.toggle('mobile-menu-active');
             this.classList.toggle('active');
+            
+            // Toggle body class for overlay
+            document.body.classList.toggle('menu-open');
             
             // Change icon
             if (this.classList.contains('active')) {
                 this.innerHTML = '<i class="fas fa-times"></i>';
+                console.log('Menu opened');
             } else {
                 this.innerHTML = '<i class="fas fa-bars"></i>';
+                console.log('Menu closed');
             }
         });
         
@@ -421,7 +431,27 @@ function initializeMobileMenu() {
                 nav.classList.remove('mobile-menu-active');
                 mobileMenuBtn.classList.remove('active');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.classList.remove('menu-open');
+                console.log('Menu closed via link click');
             });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (nav.classList.contains('mobile-menu-active') && 
+                !e.target.closest('nav') && 
+                !e.target.closest('#mobileMenuBtn')) {
+                nav.classList.remove('mobile-menu-active');
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.classList.remove('menu-open');
+                console.log('Menu closed via outside click');
+            }
+        });
+        
+        // Prevent clicks inside nav from closing menu
+        nav.addEventListener('click', function(e) {
+            e.stopPropagation();
         });
         
         // Add mobile CSS if not already in style.css
@@ -434,7 +464,7 @@ function initializeMobileMenu() {
                     display: none;
                     background: none;
                     border: none;
-                    font-size: 24px;
+                    font-size: 28px;
                     color: white;
                     cursor: pointer;
                     padding: 10px;
@@ -442,6 +472,15 @@ function initializeMobileMenu() {
                     top: 20px;
                     right: 20px;
                     z-index: 1001;
+                    transition: color 0.3s ease;
+                }
+                
+                #mobileMenuBtn:hover {
+                    color: #fbbf24;
+                }
+                
+                #mobileMenuBtn.active {
+                    color: #fbbf24;
                 }
                 
                 /* Mobile Navigation Styles */
@@ -450,31 +489,73 @@ function initializeMobileMenu() {
                         display: block;
                     }
                     
+                    /* Hide desktop nav by default on mobile */
                     nav {
+                        display: none;
+                    }
+                    
+                    /* Show nav when mobile menu is active */
+                    nav.mobile-menu-active {
+                        display: flex !important;
                         position: fixed;
                         top: 0;
-                        left: -100%;
-                        width: 250px;
+                        left: 0 !important;
+                        width: 100% !important;
                         height: 100vh;
-                        background: rgba(0, 0, 0, 0.95);
+                        background: rgba(0, 0, 0, 0.98);
                         flex-direction: column;
-                        padding: 80px 20px 20px;
-                        transition: left 0.3s ease;
+                        align-items: center;
+                        justify-content: flex-start;
+                        padding-top: 80px;
                         z-index: 1000;
+                        animation: slideIn 0.3s ease;
+                        overflow-y: auto;
                     }
                     
-                    nav.mobile-menu-active {
-                        left: 0;
-                    }
-                    
-                    nav ul {
+                    nav.mobile-menu-active ul {
                         flex-direction: column;
                         width: 100%;
+                        padding: 0 20px;
                     }
                     
-                    nav ul li {
+                    nav.mobile-menu-active ul li {
                         margin: 10px 0;
                         width: 100%;
+                        text-align: center;
+                    }
+                    
+                    nav.mobile-menu-active a {
+                        display: block;
+                        padding: 15px;
+                        font-size: 18px;
+                        border-radius: 8px;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    nav.mobile-menu-active a:hover {
+                        background: rgba(255, 255, 255, 0.1);
+                        transform: translateX(5px);
+                    }
+                    
+                    /* Body overlay when menu is open */
+                    body.menu-open {
+                        overflow: hidden;
+                    }
+                    
+                    body.menu-open::before {
+                        content: '';
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: rgba(0, 0, 0, 0.7);
+                        z-index: 999;
+                    }
+                    
+                    /* Ensure menu appears on top */
+                    nav.mobile-menu-active {
+                        z-index: 1000;
                     }
                     
                     /* Mobile layout adjustments */
@@ -516,58 +597,25 @@ function initializeMobileMenu() {
                         grid-template-columns: 1fr;
                         gap: 30px;
                     }
-                    
-                    /* Ensure overlay behind mobile menu */
-                    body::after {
-                        content: '';
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background: rgba(0,0,0,0.5);
-                        z-index: 999;
-                        display: none;
+                }
+                
+                @keyframes slideIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-10px);
                     }
-                    
-                    body.mobile-menu-open::after {
-                        display: block;
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
                     }
                 }
             `;
             document.head.appendChild(mobileStyles);
         }
+    } else {
+        console.error('Mobile menu elements not found!');
     }
 }
-
-// ====== INITIALIZATION ======
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize mobile menu
-    initializeMobileMenu();
-    
-    // Load articles on homepage
-    if (document.getElementById('articles-container')) {
-        loadArticles();
-        loadTrending();
-        
-        // Add load more event
-        const loadMoreBtn = document.getElementById('load-more');
-        if (loadMoreBtn) {
-            loadMoreBtn.addEventListener('click', loadMoreArticles);
-        }
-    }
-    
-    // Load articles on category pages
-    if (window.location.pathname.includes('food.html')) {
-        loadArticlesByCategory('food');
-    }
-    if (window.location.pathname.includes('tech.html')) {
-        loadArticlesByCategory('tech');
-    }
-    if (window.location.pathname.includes('gaming.html')) {
-        loadArticlesByCategory('gaming');
-    }
-});
 
 // ====== GLOBAL ACCESS ======
 window.allArticles = allArticles;

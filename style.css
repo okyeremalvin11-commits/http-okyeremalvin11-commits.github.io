@@ -92,6 +92,40 @@ nav a {
 nav a:hover {
     background: rgba(255,255,255,0.2);
 }
+/* Basic nav styling that works for both desktop and mobile */
+nav {
+    display: flex;
+    transition: all 0.3s ease;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+    nav {
+        display: flex !important;
+    }
+    
+    #mobileMenuBtn {
+        display: none;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    #mobileMenuBtn {
+        display: block;
+    }
+    
+    /* Hide nav by default on mobile */
+    nav {
+        display: none;
+    }
+}
 
 .nav-food:hover { background: rgba(229, 62, 62, 0.7); }
 .nav-tech:hover { background: rgba(49, 130, 206, 0.7); }
