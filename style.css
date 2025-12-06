@@ -43,12 +43,11 @@ header {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-
-
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo {
@@ -58,6 +57,7 @@ header {
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    z-index: 1002;
 }
 
 .logo-icon {
@@ -69,11 +69,46 @@ header {
     transform: rotate(20deg);
 }
 
+/* ====== MOBILE MENU BUTTON ====== */
+#mobileMenuBtn {
+    display: none;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px 15px;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1001;
+    transition: all 0.3s ease;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+}
+
+#mobileMenuBtn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#mobileMenuBtn.active {
+    background: rgba(255, 255, 255, 0.4);
+}
+
 /* ====== NAVIGATION ====== */
+nav {
+    display: flex;
+    transition: all 0.3s ease;
+}
+
 nav ul {
     display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 15px;
 }
 
 nav a {
@@ -92,92 +127,10 @@ nav a {
 nav a:hover {
     background: rgba(255,255,255,0.2);
 }
-/* Basic nav styling that works for both desktop and mobile */
-nav {
-    display: flex;
-    transition: all 0.3s ease;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-
-/* Desktop styles */
-@media (min-width: 769px) {
-    nav {
-        display: flex !important;
-    }
-    
-    #mobileMenuBtn {
-        display: none;
-    }
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-    #mobileMenuBtn {
-        display: block;
-    }
-    
-    /* Hide nav by default on mobile */
-    nav {
-        display: none;
-    }
-}
 
 .nav-food:hover { background: rgba(229, 62, 62, 0.7); }
 .nav-tech:hover { background: rgba(49, 130, 206, 0.7); }
 .nav-gaming:hover { background: rgba(128, 90, 213, 0.7); }
-
-/* ====== MOBILE MENU ====== */
-.mobile-menu-btn {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: white;
-}
-
-.mobile-menu {
-    display: none;
-    background: var(--dark);
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.mobile-menu ul {
-    list-style: none;
-}
-
-.mobile-menu li {
-    margin-bottom: 15px;
-}
-
-.mobile-menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 10px;
-    border-radius: 8px;
-    transition: background 0.3s;
-}
-
-.mobile-menu a:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-.mobile-menu.active {
-    display: block;
-}
 
 /* ====== HERO SECTION ====== */
 .hero {
@@ -590,22 +543,168 @@ footer {
     font-size: 14px;
 }
 
-/* ====== UTILITY CLASSES ====== */
-.hidden {
-    display: none !important;
+/* ====== MOBILE MENU STYLES ====== */
+@media (max-width: 768px) {
+    /* Show mobile button */
+    #mobileMenuBtn {
+        display: flex;
+    }
+    
+    /* Hide desktop nav by default */
+    #mainNav {
+        display: none !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, #1a202c, #2d3748);
+        z-index: 1000;
+        padding: 80px 20px 30px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        overflow-y: auto;
+    }
+    
+    /* Show mobile nav when active */
+    #mainNav.mobile-active {
+        display: flex !important;
+        animation: slideIn 0.3s ease-out;
+    }
+    
+    /* Mobile nav list */
+    #mainNav.mobile-active ul {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        gap: 0;
+    }
+    
+    /* Mobile nav items */
+    #mainNav.mobile-active li {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    /* Mobile nav links */
+    #mainNav.mobile-active a {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 15px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        margin: 5px 0;
+        font-size: 16px;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+    
+    #mainNav.mobile-active a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(10px);
+    }
+    
+    #mainNav.mobile-active a i {
+        width: 25px;
+        text-align: center;
+        margin-right: 10px;
+    }
+    
+    /* Prevent body scroll when menu is open */
+    body.menu-open {
+        overflow: hidden;
+    }
+    
+    body.menu-open::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+    
+    /* Adjust header for mobile */
+    .header-content {
+        padding-right: 60px;
+    }
+    
+    /* Mobile logo adjustments */
+    .logo {
+        font-size: 20px;
+    }
+    
+    /* Mobile hero adjustments */
+    .hero {
+        padding: 60px 20px;
+    }
+    
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    /* Mobile articles grid */
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Mobile stats */
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .stat-card {
+        padding: 20px;
+    }
+    
+    /* Mobile main grid */
+    .main-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Mobile footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Mobile category tags */
+    .category-tags {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tag {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
 }
 
-.text-center {
-    text-align: center;
+/* Mobile menu animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
-
-.mt-20 { margin-top: 20px; }
-.mb-20 { margin-bottom: 20px; }
-.mt-40 { margin-top: 40px; }
-.mb-40 { margin-bottom: 40px; }
 
 /* ====== RESPONSIVE DESIGN ====== */
-@media (max-width: 992px) {
+@media (max-width: 992px) and (min-width: 769px) {
     .main-grid {
         grid-template-columns: 1fr;
     }
@@ -623,68 +722,13 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
-    nav {
-        display: none;
-    }
-    
-    .mobile-menu-btn {
-        display: block;
-    }
-    
-    .header-content {
-        padding: 0 15px;
-    }
-    
-    .hero {
-        padding: 60px 20px;
-    }
-    
-    .hero h1 {
-        font-size: 32px;
-    }
-    
-    .hero p {
-        font-size: 16px;
-    }
-    
-    .articles-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .stats-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .stat-card {
-        padding: 20px;
-    }
-    
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .category-tags {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .tag {
-        width: 100%;
-        max-width: 250px;
-        justify-content: center;
-    }
-}
-
 @media (max-width: 480px) {
     .container {
         padding: 0 15px;
     }
     
     .logo {
-        font-size: 20px;
+        font-size: 18px;
     }
     
     .hero h1 {
@@ -702,22 +746,19 @@ footer {
 }
 
 /* ====== MOBILE ANCHOR FIX ====== */
-/* Add this to your existing CSS */
-
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Height of your header */
+    scroll-padding-top: 80px;
 }
 
 @media (max-width: 768px) {
     html {
-        scroll-padding-top: 70px; /* Adjust for mobile */
+        scroll-padding-top: 70px;
     }
 }
 
-/* For Food, Tech, Gaming sections */
 #food, #tech, #gaming {
-    scroll-margin-top: 80px; /* Same as header height */
+    scroll-margin-top: 80px;
 }
 
 @media (max-width: 768px) {
@@ -725,3 +766,17 @@ html {
         scroll-margin-top: 70px;
     }
 }
+
+/* ====== UTILITY CLASSES ====== */
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.mt-40 { margin-top: 40px; }
+.mb-40 { margin-bottom: 40px; }

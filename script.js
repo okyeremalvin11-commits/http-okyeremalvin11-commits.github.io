@@ -394,228 +394,153 @@ function loadTrending() {
     `).join('');
 }
 
-// ====== MOBILE MENU FUNCTIONALITY ======
+// ====== MOBILE MENU FUNCTIONALITY - SIMPLE & WORKING ======
 function initializeMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const nav = document.querySelector('nav');
+    const nav = document.getElementById('mainNav');
     
     if (mobileMenuBtn && nav) {
-        console.log('Mobile menu elements found:', mobileMenuBtn, nav);
+        console.log('✅ Mobile menu initialized');
         
         // Toggle menu when button is clicked
         mobileMenuBtn.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent event bubbling
+            e.stopPropagation();
             
-            console.log('Menu button clicked');
+            console.log('📱 Menu button clicked');
             
             // Toggle the active class on nav
-            nav.classList.toggle('mobile-menu-active');
+            nav.classList.toggle('mobile-active');
             this.classList.toggle('active');
-            
-            // Toggle body class for overlay
             document.body.classList.toggle('menu-open');
             
             // Change icon
-            if (this.classList.contains('active')) {
+            if (nav.classList.contains('mobile-active')) {
                 this.innerHTML = '<i class="fas fa-times"></i>';
-                console.log('Menu opened');
+                console.log('➡️ Menu opened');
             } else {
                 this.innerHTML = '<i class="fas fa-bars"></i>';
-                console.log('Menu closed');
+                console.log('⬅️ Menu closed');
             }
         });
         
         // Close menu when clicking a link
         nav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function() {
-                nav.classList.remove('mobile-menu-active');
+                nav.classList.remove('mobile-active');
                 mobileMenuBtn.classList.remove('active');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                 document.body.classList.remove('menu-open');
-                console.log('Menu closed via link click');
+                console.log('🔗 Menu closed via link click');
             });
         });
         
-        // Close menu when clicking outside
+        // Close menu when clicking outside (on overlay)
         document.addEventListener('click', function(e) {
-            if (nav.classList.contains('mobile-menu-active') && 
-                !e.target.closest('nav') && 
-                !e.target.closest('#mobileMenuBtn')) {
-                nav.classList.remove('mobile-menu-active');
+            if (nav.classList.contains('mobile-active') && 
+                !nav.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target)) {
+                nav.classList.remove('mobile-active');
                 mobileMenuBtn.classList.remove('active');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                 document.body.classList.remove('menu-open');
-                console.log('Menu closed via outside click');
+                console.log('🖱️ Menu closed via outside click');
             }
         });
         
-        // Prevent clicks inside nav from closing menu
-        nav.addEventListener('click', function(e) {
-            e.stopPropagation();
+        // Also close menu with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && nav.classList.contains('mobile-active')) {
+                nav.classList.remove('mobile-active');
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.classList.remove('menu-open');
+                console.log('⎋ Menu closed via Escape key');
+            }
         });
         
-        // Add mobile CSS if not already in style.css
-        if (!document.querySelector('#mobile-menu-styles')) {
-            const mobileStyles = document.createElement('style');
-            mobileStyles.id = 'mobile-menu-styles';
-            mobileStyles.textContent = `
-                /* Mobile Menu Button */
-                #mobileMenuBtn {
-                    display: none;
-                    background: none;
-                    border: none;
-                    font-size: 28px;
-                    color: white;
-                    cursor: pointer;
-                    padding: 10px;
-                    position: absolute;
-                    top: 20px;
-                    right: 20px;
-                    z-index: 1001;
-                    transition: color 0.3s ease;
-                }
-                
-                #mobileMenuBtn:hover {
-                    color: #fbbf24;
-                }
-                
-                #mobileMenuBtn.active {
-                    color: #fbbf24;
-                }
-                
-                /* Mobile Navigation Styles */
-                @media (max-width: 768px) {
-                    #mobileMenuBtn {
-                        display: block;
-                    }
-                    
-                    /* Hide desktop nav by default on mobile */
-                    nav {
-                        display: none;
-                    }
-                    
-                    /* Show nav when mobile menu is active */
-                    nav.mobile-menu-active {
-                        display: flex !important;
-                        position: fixed;
-                        top: 0;
-                        left: 0 !important;
-                        width: 100% !important;
-                        height: 100vh;
-                        background: rgba(0, 0, 0, 0.98);
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: flex-start;
-                        padding-top: 80px;
-                        z-index: 1000;
-                        animation: slideIn 0.3s ease;
-                        overflow-y: auto;
-                    }
-                    
-                    nav.mobile-menu-active ul {
-                        flex-direction: column;
-                        width: 100%;
-                        padding: 0 20px;
-                    }
-                    
-                    nav.mobile-menu-active ul li {
-                        margin: 10px 0;
-                        width: 100%;
-                        text-align: center;
-                    }
-                    
-                    nav.mobile-menu-active a {
-                        display: block;
-                        padding: 15px;
-                        font-size: 18px;
-                        border-radius: 8px;
-                        transition: all 0.3s ease;
-                    }
-                    
-                    nav.mobile-menu-active a:hover {
-                        background: rgba(255, 255, 255, 0.1);
-                        transform: translateX(5px);
-                    }
-                    
-                    /* Body overlay when menu is open */
-                    body.menu-open {
-                        overflow: hidden;
-                    }
-                    
-                    body.menu-open::before {
-                        content: '';
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background: rgba(0, 0, 0, 0.7);
-                        z-index: 999;
-                    }
-                    
-                    /* Ensure menu appears on top */
-                    nav.mobile-menu-active {
-                        z-index: 1000;
-                    }
-                    
-                    /* Mobile layout adjustments */
-                    .hero {
-                        padding: 60px 20px;
-                    }
-                    
-                    .hero h1 {
-                        font-size: 32px;
-                    }
-                    
-                    .category-tags {
-                        flex-direction: column;
-                        align-items: center;
-                        gap: 10px;
-                    }
-                    
-                    .tag {
-                        width: 100%;
-                        max-width: 250px;
-                        justify-content: center;
-                    }
-                    
-                    .main-grid {
-                        grid-template-columns: 1fr;
-                        gap: 30px;
-                    }
-                    
-                    .stats-container {
-                        grid-template-columns: 1fr;
-                        gap: 15px;
-                    }
-                    
-                    .articles-grid {
-                        grid-template-columns: 1fr;
-                    }
-                    
-                    .footer-grid {
-                        grid-template-columns: 1fr;
-                        gap: 30px;
-                    }
-                }
-                
-                @keyframes slideIn {
-                    from {
-                        opacity: 0;
-                        transform: translateY(-10px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-            `;
-            document.head.appendChild(mobileStyles);
-        }
     } else {
-        console.error('Mobile menu elements not found!');
+        console.error('❌ Mobile menu elements not found!');
+        console.log('Looking for:', {
+            mobileMenuBtn: mobileMenuBtn ? 'Found' : 'Not found',
+            nav: nav ? 'Found' : 'Not found'
+        });
     }
 }
+
+// ====== INITIALIZATION ======
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('📄 DOM loaded, initializing...');
+    
+    // Initialize mobile menu FIRST
+    initializeMobileMenu();
+    
+    // Load articles on homepage
+    if (document.getElementById('articles-container')) {
+        loadArticles();
+        loadTrending();
+        
+        // Add load more event
+        const loadMoreBtn = document.getElementById('load-more');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', loadMoreArticles);
+        }
+    }
+    
+    // Load articles on category pages
+    if (window.location.pathname.includes('food.html')) {
+        loadArticlesByCategory('food');
+    }
+    if (window.location.pathname.includes('tech.html')) {
+        loadArticlesByCategory('tech');
+    }
+    if (window.location.pathname.includes('gaming.html')) {
+        loadArticlesByCategory('gaming');
+    }
+    
+    // Initialize newsletter subscription
+    const subscribeBtn = document.getElementById('subscribe-btn');
+    if (subscribeBtn) {
+        subscribeBtn.addEventListener('click', function() {
+            const email = document.getElementById('newsletter-email').value;
+            const message = document.getElementById('subscribe-message');
+            
+            if (email && email.includes('@')) {
+                message.innerHTML = '<span style="color: var(--success);">✓ Subscribed! Check your email.</span>';
+                console.log('📧 Newsletter subscription:', email);
+            } else {
+                message.innerHTML = '<span style="color: var(--food-color);">Please enter a valid email</span>';
+            }
+        });
+    }
+    
+    // Update visitor counters (simulated)
+    setTimeout(() => {
+        const visitorElements = [
+            'total-visitors', 
+            'total-visitors-footer', 
+            'online-now',
+            'ad1-views',
+            'ad2-views',
+            'ad3-views'
+        ];
+        
+        visitorElements.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                const current = parseInt(el.textContent) || 0;
+                el.textContent = current + Math.floor(Math.random() * 10) + 1;
+            }
+        });
+        
+        // Update articles read
+        const articlesRead = document.getElementById('articles-read');
+        if (articlesRead) {
+            articlesRead.textContent = Math.floor(Math.random() * 100) + 50;
+        }
+    }, 1000);
+    
+    console.log('✅ All scripts initialized');
+});
 
 // ====== GLOBAL ACCESS ======
 window.allArticles = allArticles;
