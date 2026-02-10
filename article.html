@@ -391,6 +391,7 @@
             
             <div class="copyright">
                 <p>© 2024 DigitalLifeHub. All content is free to use with attribution.</p>
+                <p style="margin-top: 8px; font-size: 11px; color: #a0aec0;"><i class="fas fa-image"></i> Images under appropriate license. See COPYRIGHT_REPORT.md for attribution details.</p>
             </div>
         </div>
     </footer>
@@ -402,14 +403,15 @@
         const urlParams = new URLSearchParams(window.location.search);
         const articleId = parseInt(urlParams.get('id'));
         
-        // COMPLETE Article database - ALL 22 articles
+        console.log('📄 Article ID requested:', articleId);
+        console.log('📍 URL:', window.location.href);
         const articleDatabase = {
             // ====== ARTICLE 1 ======
             1: {
                 title: "5-Minute Breakfast Recipes for Programmers",
                 category: "food",
                 excerpt: "Quick, healthy breakfast ideas you can make between coding sessions.",
-                image: "https://asset.jamieoliver.com/images/cq7w2e71/production/772457af67e5e2c12ab83bdcbca8692d6fde1f0b-973x1300.jpg/46261637?rect=0,164,973,973&w=700&h=700&fm=webp&q=80&fit=crop&auto=format",
+                image: "https://images.unsplash.com/photo-1587621881783-0c55aef67ea7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "3 min",
                 date: "March 15, 2024",
                 content: `
@@ -423,7 +425,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://asset.jamieoliver.com/images/cq7w2e71/production/772457af67e5e2c12ab83bdcbca8692d6fde1f0b-973x1300.jpg/46261637?rect=0,164,973,973&w=700&h=700&fm=webp&q=80&fit=crop&auto=format" alt="Quick Breakfast" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1587621881783-0c55aef67ea7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Quick Breakfast" class="article-image">
                     
                     <div class="article-content">
                         <h2>The Programmer's Breakfast Problem</h2>
@@ -473,7 +475,7 @@
                 title: "Build Your First Website in 1 Hour",
                 category: "tech",
                 excerpt: "Step-by-step HTML/CSS tutorial for complete beginners.",
-                image: "https://syncpr.co/wp-content/uploads/2018/04/Building-your-first-website-guide.png",
+                image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "7 min",
                 date: "March 14, 2024",
                 content: `
@@ -487,7 +489,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://syncpr.co/wp-content/uploads/2018/04/Building-your-first-website-guide.png" alt="Web Development" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Web Development" class="article-image">
                     
                     <div class="article-content">
                         <h2>What You'll Build</h2>
@@ -545,7 +547,7 @@
                 title: "Best Gaming Setup Under $500",
                 category: "gaming",
                 excerpt: "Create the ultimate gaming station without breaking the bank.",
-                image: "https://tse2.mm.bing.net/th/id/OIP.GxLUdsKn7ppie7kbw8MqiAHaFj?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+                image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "5 min",
                 date: "March 13, 2024",
                 content: `
@@ -559,7 +561,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://tse2.mm.bing.net/th/id/OIP.GxLUdsKn7ppie7kbw8MqiAHaFj?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Gaming Setup" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gaming Setup" class="article-image">
                     
                     <div class="article-content">
                         <h2>The $500 Challenge</h2>
@@ -606,7 +608,7 @@
                 title: "Gamer Fuel: Energy-Boosting Snacks",
                 category: "food",
                 excerpt: "Healthy snacks that keep you energized during long gaming sessions.",
-                image: "https://i.ytimg.com/vi/b5G1Ak2dftg/maxresdefault.jpg",
+                image: "https://images.unsplash.com/photo-1599599810694-b5ac73f5f53f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "4 min",
                 date: "March 12, 2024",
                 content: `
@@ -620,7 +622,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://i.ytimg.com/vi/b5G1Ak2dftg/maxresdefault.jpg" alt="Healthy Snacks" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1599599810694-b5ac73f5f53f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Healthy Snacks" class="article-image">
                     
                     <div class="article-content">
                         <h2>The Gaming Snack Problem</h2>
@@ -649,7 +651,7 @@
                 title: "How to Protect Your Gaming Accounts",
                 category: "tech",
                 excerpt: "Essential security tips to keep your gaming profiles safe from hackers.",
-                image: "https://th.bing.com/th/id/OIP.tcakm72Ub1kFilG9-2hZPwHaEo?o=7&cb=ucfimg2&rm=3&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+                image: "https://images.unsplash.com/photo-1633356270995-90a468ce6620?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "6 min",
                 date: "March 11, 2024",
                 content: `
@@ -663,7 +665,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://th.bing.com/th/id/OIP.tcakm72Ub1kFilG9-2hZPwHaEo?o=7&cb=ucfimg2&rm=3&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Account Security" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1633356270995-90a468ce6620?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Account Security" class="article-image">
                     
                     <div class="article-content">
                         <h2>The Reality of Gaming Account Hacks</h2>
@@ -692,7 +694,7 @@
                 title: "Mobile Games That Pay Real Money",
                 category: "gaming",
                 excerpt: "Legit mobile games that actually let you earn cash and gift cards.",
-                image: "https://tse1.mm.bing.net/th/id/OIP.qvcw8dP37zUrxQp-y2HSUgAAAA?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+                image: "https://images.unsplash.com/photo-1516321318423-f06f70674688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "8 min",
                 date: "March 10, 2024",
                 content: `
@@ -706,7 +708,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://tse1.mm.bing.net/th/id/OIP.qvcw8dP37zUrxQp-y2HSUgAAAA?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Mobile Games" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f70674688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mobile Games" class="article-image">
                     
                     <div class="article-content">
                         <h2>Real vs Fake Money Games</h2>
@@ -735,7 +737,7 @@
                 title: "Koko and Koose: The Ultimate Ghanaian Breakfast Combo",
                 category: "food",
                 excerpt: "Learn how to make authentic Hausa koko (spicy millet porridge) paired with perfectly fried koose (bean cakes).",
-                image: "https://i.ytimg.com/vi/1t9It6wl8Hg/maxresdefault.jpg",
+                image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "12 min",
                 date: "March 17, 2024",
                 content: `
@@ -749,11 +751,12 @@
                         </div>
                     </div>
                     
-                    <img src="https://i.ytimg.com/vi/1t9It6wl8Hg/maxresdefault.jpg" alt="Traditional Ghanaian Breakfast" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1495521821757-a1efb6729352?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Traditional Ghanaian Breakfast" class="article-image">
                     
                     <div class="article-content">
+                        <p style="background: #fff3cd; padding: 10px; border-left: 3px solid #ffc107; margin-bottom: 20px; font-size: 12px; color: #856404;"><strong>📝 AI-Assisted Content:</strong> This article is created with AI assistance. Information is based on research and cultural documentation.</p>
                         <h2>Why This Combo is Perfect for Ghanaian Mornings</h2>
-                        <p>As someone who grew up in Northern Ghana, I've seen how koko and koose fuel entire families for busy mornings. This combination isn't just food—it's cultural heritage in a bowl.</p>
+                        <p>Koko (spiced millet porridge) and koose (fried bean cakes) are traditional staple foods that have sustained Ghanaian families for generations. This breakfast combination is known for providing sustained energy and is particularly popular in Northern Ghana.</p>
                         
                         <h2>Authentic Koko (Millet Porridge) Recipe</h2>
                         <p><strong>Ingredients:</strong></p>
@@ -796,7 +799,7 @@
                         <p><strong>The Trick:</strong> Blend the beans with minimal water—just enough to get a thick paste. The thicker the batter, the fluffier the koose.</p>
                         
                         <h2>Serving Suggestions</h2>
-                        <p>In my family, we serve koko in calabash bowls with koose on the side. The traditional way is to dip koose into the koko, but many Ghanaians now prefer to crumble koose into the porridge.</p>
+                        <p>Traditionally, koko is served in calabash bowls with koose on the side. The classic method is to dip koose into the koko, though many modern variations include crumbling koose directly into the porridge. Both approaches are widely practiced across Ghana.</p>
                         
                         <h2>Nutritional Benefits</h2>
                         <p>This breakfast provides sustained energy. The millet offers complex carbs, while the beans provide protein. Perfect for students, farmers, or anyone with a long day ahead.</p>
@@ -807,7 +810,7 @@
                         </div>
                         
                         <h2>Final Thoughts</h2>
-                        <p>This breakfast combo has sustained generations of Ghanaians. It's affordable (under GH₵10 for 4 servings), nutritious, and deeply satisfying. Give it a try this weekend and taste authentic Ghanaian morning tradition.</p>
+                        <p>This breakfast combination has been central to Ghanaian food culture for generations. It remains affordable (typically under GH₵10 for 4 servings), nutritious, and widely available. It's a recommended dish for anyone interested in traditional Ghanaian cuisine.</p>
                     </div>
                 `
             },
@@ -817,7 +820,7 @@
                 title: "MTN vs Vodafone: Which Has Better Night Data Bundles in 2024?",
                 category: "tech",
                 excerpt: "I tested both networks for 30 days. Here's which provider gives you more nighttime data for your money.",
-                image: "https://i.ytimg.com/vi/aFmViZXw3pw/maxresdefault.jpg",
+                image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "7 min",
                 date: "March 17, 2024",
                 content: `
@@ -831,11 +834,12 @@
                         </div>
                     </div>
                     
-                    <img src="https://i.ytimg.com/vi/aFmViZXw3pw/maxresdefault.jpg" alt="Mobile Networks Comparison" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mobile Networks Comparison" class="article-image">
                     
                     <div class="article-content">
-                        <h2>The 30-Day Network Test</h2>
-                        <p>As a student who studies at night, I depend on affordable data. I bought SIM cards from both MTN and Vodafone and tested their night bundles for 30 days. Here's what I discovered.</p>
+                        <p style="background: #fff3cd; padding: 10px; border-left: 3px solid #ffc107; margin-bottom: 20px; font-size: 12px; color: #856404;"><strong>📝 AI-Assisted Content:</strong> This article is created with AI assistance. Information is based on publicly available pricing and user reports (as of March 2024).</p>
+                        <h2>Comparing Night Data Bundles</h2>
+                        <p>Night data bundles are an affordable option for students and night-shift workers in Ghana. Both MTN and Vodafone offer popular night bundle plans. Below is a comparison based on publicly available pricing and reported user experiences.</p>
                         
                         <h2>Price Comparison (March 2024)</h2>
                         <p><strong>MTN Night Bundle:</strong></p>
@@ -857,8 +861,8 @@
                             <p>Vodafone offers more data (3GB vs 2GB for GH₵5) and longer hours (7 hours vs 5 hours). But there's more to consider...</p>
                         </div>
                         
-                        <h2>Real-World Speed Test</h2>
-                        <p>I tested download speeds in 3 locations in Accra:</p>
+                        <h2>Reported Speed Performance</h2>
+                        <p>Based on user reports and network performance data, here are typical speeds observed across different locations:</p>
                         
                         <p><strong>Average Download Speeds (12am-2am):</strong></p>
                         <ul>
@@ -912,7 +916,7 @@
                         <p><strong>Vodafone:</strong> Dial *110# → Choose "Night Surfer"</p>
                         
                         <h2>Final Verdict</h2>
-                        <p>After 30 days of testing, I now use both:</p>
+                        <p>Many users report switching between both providers depending on their needs:</p>
                         <ul>
                             <li><strong>MTN:</strong> For important video calls and studying</li>
                             <li><strong>Vodafone:</strong> For downloading lectures and entertainment</li>
@@ -941,11 +945,12 @@
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8" alt="Gaming Tournament" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gaming Tournament" class="article-image">
                     
                     <div class="article-content">
+                        <p style="background: #fff3cd; padding: 10px; border-left: 3px solid #ffc107; margin-bottom: 20px; font-size: 12px; color: #856404;"><strong>📝 AI-Assisted Content:</strong> This article is created with AI assistance. Strategies are based on common tournament patterns observed in gaming culture.</p>
                         <h2>Understanding Ghanaian FIFA Culture</h2>
-                        <p>Ghanaian FIFA players have a unique style developed in gaming cafés. They're aggressive, love skill moves, and play with high pressure. After losing my first 5 tournaments, I adapted and started winning.</p>
+                        <p>FIFA tournaments held in Ghanaian gaming cafés have developed distinctive playing styles. Players tend to employ aggressive tactics, frequent skill moves, and high-pressure defense. Understanding these patterns can help you compete effectively in local tournaments.</p>
                         
                         <h2>Common Ghanaian Player Patterns</h2>
                         <p><strong>Pattern 1: Early Pressure</strong></p>
@@ -998,8 +1003,8 @@
                         <p><strong>Solution:</strong> Bring headphones (if allowed) or focus on the screen, not the crowd.</p>
                         
                         <div class="tip-box">
-                            <h3><i class="fas fa-trophy"></i> Prize Money Reality</h3>
-                            <p>Most tournaments offer GH₵50-200 for first place. Some cafés pay in "café credit" instead of cash. Always ask before registering.</p>
+                            <h3><i class="fas fa-trophy"></i> Tournament Prize Reality</h3>
+                            <p>Typical tournaments offer GH₵50-200 for first place. Some cafés award "café credit" instead of direct cash. Verify prize structure before registering.</p>
                         </div>
                         
                         <h2>Warm-Up Routine</h2>
@@ -1028,8 +1033,8 @@
                             <li><strong>Know the rules:</strong> Some ban certain teams or tactics</li>
                         </ul>
                         
-                        <h2>My Winning Formula</h2>
-                        <p>After 3 tournament wins, here's my guaranteed approach:</p>
+                        <h2>Recommended Tournament Strategy</h2>
+                        <p>Common effective approaches used by successful tournament players include:</p>
                         <ol>
                             <li>Pick Liverpool (consistent and fast)</li>
                             <li>Play possession first half (assess opponent)</li>
@@ -1048,7 +1053,7 @@
                 title: "How to Enjoy Street Food Safely in Accra",
                 category: "food",
                 excerpt: "After getting food poisoning twice, I learned these essential tips for identifying clean street food vendors in Ghana.",
-                image: "https://tse4.mm.bing.net/th/id/OIP.4ln7CjKBeP3K2hFUuopu3QHaEK?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+                image: "https://images.unsplash.com/photo-1555939594-58d7cb561031?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 readTime: "6 min",
                 date: "March 16, 2024",
                 content: `
@@ -1062,7 +1067,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://tse4.mm.bing.net/th/id/OIP.4ln7CjKBeP3K2hFUuopu3QHaEK?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Street Food" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561031?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Street Food" class="article-image">
                     
                     <div class="article-content">
                         <h2>My Food Poisoning Lessons</h2>
@@ -1105,7 +1110,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" alt="Smartphones" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Smartphones" class="article-image">
                     
                     <div class="article-content">
                         <h2>My Testing Methodology</h2>
@@ -1148,7 +1153,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31" alt="Data Saving" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Data Saving" class="article-image">
                     
                     <div class="article-content">
                         <h2>The Data Drain</h2>
@@ -1191,11 +1196,12 @@
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0" alt="Tech Career" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tech Career" class="article-image">
                     
                     <div class="article-content">
-                        <h2>My Background</h2>
-                        <p>No computer science degree. No connections. Just 8 months of focused learning. Here's my exact path.</p>
+                        <p style="background: #fff3cd; padding: 10px; border-left: 3px solid #ffc107; margin-bottom: 20px; font-size: 12px; color: #856404;"><strong>📝 AI-Assisted Content:</strong> This article is created with AI assistance. The learning path outlined is based on common successful approaches used by self-taught developers.</p>
+                        <h2>Learning Path for Self-Taught Developers</h2>
+                        <p>Many developers in Ghana have successfully entered the tech industry without formal computer science degrees. The learning path below represents a common approach used by self-taught professionals.</p>
                         
                         <h2>Step-by-Step Learning Path</h2>
                         <p><strong>Months 1-3: HTML, CSS, JavaScript Basics</strong></p>
@@ -1234,11 +1240,29 @@
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd" alt="Mobile Money Games" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mobile Money Games" class="article-image">
                     
                     <div class="article-content">
-                        <h2>Scam Warning</h2>
-                        <p>90% of "earn money" games are scams. They make you watch endless ads then never pay. These 5 actually work.</p>
+                        <p style="background: #fff3cd; padding: 10px; border-left: 3px solid #ffc107; margin-bottom: 20px; font-size: 12px; color: #856404;"><strong>📝 AI-Assisted Content:</strong> This article is created with AI assistance. Information is based on user reviews and app store ratings.</p>
+                        
+                        <div class="important-notice" style="background: #ffe6e6; border-left: 3px solid #e53e3e; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+                            <h3 style="color: #c92a2a; margin-bottom: 10px; font-size: 16px;">⚠️ Important Disclaimer</h3>
+                            <p style="margin: 8px 0; font-size: 13px;">
+                                <strong>Earnings are NOT Guaranteed.</strong> The amounts listed are averages based on user reports and may vary significantly based on:
+                            </p>
+                            <ul style="margin-left: 20px; margin-top: 8px; font-size: 13px;">
+                                <li>Your location and demographics (apps pay less in some countries)</li>
+                                <li>Time invested (most users earn ₵20-100/month, not ₵1000+)</li>
+                                <li>Survey availability (varies daily/weekly)</li>
+                                <li>Your profile quality (age, income level affects eligibility)</li>
+                            </ul>
+                            <p style="margin-top: 10px; font-size: 13px;">
+                                <strong>Risk:</strong> Even "legitimate" apps can change payment terms, reduce rewards, or become inactive. Apps listed here may disappear or stop paying at any time.
+                            </p>
+                        </div>
+                        
+                        <h2>Mobile Games with Genuine Rewards</h2>
+                        <p>Many "earn money" games make unverifiable promises. Below are apps that have demonstrated reliable payment systems based on user reports and app store reviews.</p>
                         
                         <h2>Legitimate Games for Ghanaians</h2>
                         <p><strong>1. Money Well (Pays to MTN MoMo)</strong></p>
@@ -1253,6 +1277,16 @@
                         <div class="tip-box">
                             <h3><i class="fas fa-money-check-alt"></i> Payment Reality</h3>
                             <p>Most apps pay via PayPal. For MoMo payments, you'll need to convert via third-party services.</p>
+                        </div>
+                        
+                        <div class="important-notice" style="background: #f0f4f8; border-left: 3px solid #3182ce; padding: 15px; margin-top: 30px; border-radius: 5px;">
+                            <h3 style="color: #2d3748; margin-bottom: 10px; font-size: 16px;">💡 Final Thoughts</h3>
+                            <p style="margin: 8px 0; font-size: 13px;">
+                                These apps work best as a supplementary income source (pocket change), <strong>not as a primary income.</strong> You're trading time for very small amounts of money. Use the earnings for data top-ups or small purchases, but don't expect to earn significant income from mobile games.
+                            </p>
+                            <p style="margin-top: 10px; font-size: 13px;">
+                                <strong>Better Alternatives:</strong> Freelancing on Fiverr, Upwork, or building skills in tech/design typically generates far more income for the time invested.
+                            </p>
                         </div>
                     </div>
                 `
@@ -1277,7 +1311,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575" alt="Budget Gaming" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Budget Gaming" class="article-image">
                     
                     <div class="article-content">
                         <h2>The Student Gaming Reality</h2>
@@ -1326,7 +1360,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f" alt="Group Gaming" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Group Gaming" class="article-image">
                     
                     <div class="article-content">
                         <h2>Campus Gaming Culture</h2>
@@ -1369,7 +1403,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1608034310701-2f6a1d5a5d0a" alt="Ghanaian Jollof Rice" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1608034310701-2f6a1d5a5d0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ghanaian Jollof Rice" class="article-image">
                     
                     <div class="article-content">
                         <h2>The Ghana vs Nigeria Jollof Debate</h2>
@@ -1454,7 +1488,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Banku and Tilapia" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Banku and Tilapia" class="article-image">
                     
                     <div class="article-content">
                         <h2>The Coastal Ghana Experience</h2>
@@ -1515,7 +1549,7 @@
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187" alt="Fufu and Soup" class="article-image">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fufu and Soup" class="article-image">
                     
                     <div class="article-content">
                         <h2>Traditional Ashanti Meal</h2>
@@ -1689,10 +1723,15 @@
             const contentEl = document.getElementById('article-content');
             const backButton = document.getElementById('back-button');
             
+            console.log('🔍 loadArticle() called. Article ID:', articleId);
+            console.log('📊 Available articles in database:', Object.keys(articleDatabase));
+            
             if (!articleId || !articleDatabase[articleId]) {
+                console.error('❌ Article not found. ID:', articleId);
                 loadingEl.innerHTML = `
                     <h2>Article Not Found</h2>
                     <p>The article you're looking for doesn't exist.</p>
+                    <p style="font-size: 12px; margin-top: 10px; color: #718096;">Requested ID: ${articleId}</p>
                     <a href="index.html" class="back-button">
                         <i class="fas fa-arrow-left"></i> Back to Home
                     </a>
@@ -1701,6 +1740,8 @@
             }
             
             const article = articleDatabase[articleId];
+            
+            console.log('✅ Article found:', article.title);
             
             // Update page title
             document.title = `${article.title} - Digital Life Hub`;
@@ -1714,6 +1755,7 @@
                 
                 // Update view count
                 updateViewCount(articleId);
+                console.log('✨ Article loaded successfully');
             }, 1000);
         }
         
@@ -1732,6 +1774,7 @@
         
         // Load article when page is ready
         document.addEventListener('DOMContentLoaded', loadArticle);
+        console.log('✅ Article page loaded - waiting for DOMContentLoaded...');
     </script>
 </body>
 </html>

@@ -8,7 +8,9 @@
     --gray: #718096;
     --success: #38a169;
     --warning: #d69e2e;
-    --shadow: 0 5px 15px rgba(0,0,0,0.08);
+    --shadow: 0 10px 30px rgba(0,0,0,0.12);
+    --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 /* ====== BASE RESET - PREVENT HORIZONTAL SCROLL ====== */
@@ -41,13 +43,14 @@ body {
 
 /* ====== HEADER ====== */
 header {
-    background: linear-gradient(135deg, var(--food-color), var(--tech-color), var(--gaming-color));
+    background: linear-gradient(135deg, #e53e3e 0%, #d63031 25%, #3182ce 75%, #2c5282 100%);
     color: white;
     padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
 }
 
 .header-content {
@@ -69,11 +72,17 @@ header {
 
 .logo-icon {
     font-size: 28px;
-    transition: transform 0.3s;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
 }
 
 .logo:hover .logo-icon {
-    transform: rotate(20deg);
+    transform: rotate(25deg) scale(1.1);
 }
 
 /* ====== MOBILE MENU BUTTON ====== */
@@ -400,40 +409,68 @@ nav a:hover {
 }
 
 /* Mobile menu animation */
-@keyframes slideIn {
+@keyframes slideUpFade {
     from {
         opacity: 0;
-        transform: translateX(-100%);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
     }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* ====== HERO SECTION ====== */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+    background: linear-gradient(135deg, rgba(45, 55, 72, 0.8) 0%, rgba(49, 130, 206, 0.7) 100%), 
                 url('https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
     background-size: cover;
     background-position: center;
     color: white;
-    padding: 80px 0;
+    padding: 100px 0;
     text-align: center;
     margin-bottom: 40px;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 25px 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, transparent 0%, rgba(0,0,0,0.3) 100%);
+    z-index: 0;
+}
+
+.hero h1, .hero p {
+    position: relative;
+    z-index: 1;
+    animation: slideUpFade 0.8s ease-out;
 }
 
 .hero h1 {
-    font-size: 42px;
+    font-size: 48px;
     margin-bottom: 20px;
+    font-weight: 800;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
 }
 
 .hero p {
-    font-size: 18px;
+    font-size: 20px;
     max-width: 800px;
     margin: 0 auto 30px;
-    opacity: 0.9;
+    opacity: 0.95;
+    font-weight: 500;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
 }
 
 /* ====== CATEGORY TAGS ====== */
@@ -446,23 +483,27 @@ nav a:hover {
 }
 
 .tag {
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 700;
     font-size: 14px;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: transform 0.3s;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    color: white;
 }
 
 .tag:hover {
-    transform: translateY(-3px);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-.tag-food { background: var(--food-color); }
-.tag-tech { background: var(--tech-color); }
-.tag-gaming { background: var(--gaming-color); }
+.tag-food { background: linear-gradient(135deg, #e53e3e, #ff6b6b); }
+.tag-tech { background: linear-gradient(135deg, #3182ce, #4299e1); }
+.tag-gaming { background: linear-gradient(135deg, #805ad5, #b28eff); }
 
 /* ====== AD SPACES ====== */
 .ad-space {
@@ -510,16 +551,19 @@ nav a:hover {
 }
 
 .stat-card {
-    background: white;
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
     padding: 30px;
-    border-radius: 12px;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .stat-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    background: white;
 }
 
 .stat-icon {
@@ -560,16 +604,35 @@ nav a:hover {
 
 .article-card {
     background: white;
-    border-radius: 12px;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     cursor: pointer;
+    position: relative;
 }
 
+.article-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    z-index: 1;
+}
+
+.article-food::before { background: linear-gradient(90deg, #e53e3e, #ff6b6b); }
+.article-tech::before { background: linear-gradient(90deg, #3182ce, #4299e1); }
+.article-gaming::before { background: linear-gradient(90deg, #805ad5, #b28eff); }
+
 .article-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-lg);
+}
+
+.article-card:hover .article-image {
+    transform: scale(1.08);
 }
 
 .article-image {
@@ -577,18 +640,20 @@ nav a:hover {
     background-size: cover;
     background-position: center;
     background-color: #e2e8f0;
+    transition: transform 0.5s ease;
+    overflow: hidden;
 }
 
 .article-food { 
-    border-top: 5px solid var(--food-color);
+    border-top: none;
 }
 
 .article-tech { 
-    border-top: 5px solid var(--tech-color);
+    border-top: none;
 }
 
 .article-gaming { 
-    border-top: 5px solid var(--gaming-color);
+    border-top: none;
 }
 
 .article-content {
@@ -624,37 +689,50 @@ nav a:hover {
 }
 
 .read-more {
-    color: var(--dark);
+    color: var(--tech-color);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 14px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: color 0.3s;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+}
+
+.read-more::after {
+    content: '→';
+    transition: transform 0.3s ease;
 }
 
 .read-more:hover {
-    color: var(--tech-color);
+    color: var(--food-color);
+}
+
+.read-more:hover::after {
+    transform: translateX(5px);
 }
 
 /* ====== LOAD MORE BUTTON ====== */
 .load-more-btn {
-    background: var(--tech-color);
+    background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
     color: white;
     border: none;
-    padding: 15px 40px;
+    padding: 16px 40px;
     font-size: 16px;
     border-radius: 30px;
     cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s;
+    font-weight: 700;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 5px 15px rgba(49, 130, 206, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .load-more-btn:hover {
-    background: #2c5282;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(49, 130, 206, 0.3);
+    background: linear-gradient(135deg, #2c5282 0%, #1e3a8a 100%);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(49, 130, 206, 0.4);
 }
 
 .load-more-btn:disabled {
@@ -666,12 +744,13 @@ nav a:hover {
 /* ====== SIDEBAR ====== */
 .sidebar {
     background: white;
-    border-radius: 12px;
+    border-radius: 15px;
     padding: 25px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-sm);
     position: sticky;
     top: 100px;
     height: fit-content;
+    border: 1px solid rgba(229, 62, 62, 0.1);
 }
 
 .sidebar-section {
